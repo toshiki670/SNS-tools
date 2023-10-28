@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "SNS-tools",
+    "productName": "sns-tools",
     "version": "0.0.0"
   },
   "tauri": {
@@ -37,7 +37,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "SNS-tools",
+        "title": "sns-tools",
         "width": 800,
         "height": 600
       }
