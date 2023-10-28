@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../sns-tools"
+		}
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"rust": "html"
+		}
+	}
+}
