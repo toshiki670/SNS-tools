@@ -8,3 +8,8 @@ ignore = ["./src-tauri"]
 address = "127.0.0.1"
 port = 1420
 open = false
+
+[[hooks]]
+stage = "build"
+command = "tailwindcss"
+command_arguments = ["-c", "./tailwind.config.js", "-o", "./tailwind.css", "--minify"]
