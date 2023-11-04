@@ -15,8 +15,8 @@ struct GreetArgs<'a> {
     name: &'a str,
 }
 
-#[function_component(App)]
-pub fn app() -> Html {
+#[function_component]
+pub fn App() -> Html {
     let greet_input_ref = use_node_ref();
 
     let name = use_state(|| String::new());
