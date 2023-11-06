@@ -7,7 +7,11 @@ edition = "2021"
 [dependencies]
 yew = { version = "0.21", features = ["csr"] }
 yew-router = "0.18"
-yew_icons = "0.8.0"
+# https://finnbear.github.io/yew_icons/
+yew_icons = {version = "0.8", features = [
+        "LucideLayoutDashboard",
+        "BootstrapTwitter"
+    ]}
 serde = { version = "1.0", features = ["derive"] }
 serde-wasm-bindgen = "0.4"
 wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
