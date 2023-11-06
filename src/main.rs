@@ -1,4 +1,8 @@
 mod app;
+mod components;
+mod pages;
+mod providers;
+mod routes;
 
 use app::App;
 
