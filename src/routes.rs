@@ -10,7 +10,7 @@ use crate::pages::x::X;
 pub enum Route {
     #[at("/x")]
     X,
-    #[at("/dashboard")]
+    #[at("/")]
     Dashboard,
     #[not_found]
     #[at("/404")]
