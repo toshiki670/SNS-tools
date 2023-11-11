@@ -9,11 +9,11 @@ This template should help get you started developing with Tauri and Yew.
 ## Preparation
 
 ```text
-yarn global add tailwindcss
+yarn
 ```
 
 ## To get started run
 
 ```text
-cargo tauri dev
+yarn tauri dev
 ```
