@@ -17,3 +17,7 @@ yarn
 ```text
 yarn tauri dev
 ```
+
+## Reference
+
+https://heroicons.com
