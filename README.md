@@ -20,4 +20,4 @@ yarn tauri dev
 
 ## Reference
 
-https://heroicons.com
+<https://heroicons.com>
