@@ -21,7 +21,7 @@ interface SideNavigationItem {
 const SideNavigation = (): JSX.Element => {
   const navigationItems = [
     { name: 'Dashboard', to: '.', icon: HomeIcon },
-    { name: 'X(Twitter)', to: './x', icon: ChatBubbleBottomCenterTextIcon },,
+    { name: 'X(Twitter)', to: './x', icon: ChatBubbleBottomCenterTextIcon }
   ].filter(Boolean) as SideNavigationItem[]
 
   return (
@@ -117,7 +117,7 @@ interface MobileSidebarProps {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
+const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps): JSX.Element => {
   return (
     <Transition.Root show={sidebarOpen} as={React.Fragment}>
       <Dialog

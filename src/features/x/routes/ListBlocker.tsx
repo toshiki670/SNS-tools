@@ -1,15 +1,13 @@
-import { Spinner } from '@/components/Elements'
+// import { Spinner } from '@/components/Elements'
 import { ContentLayout } from '@/components/Layout'
 // import { formatDate } from '@/utils/format';
 
 export const ListBlocker = (): JSX.Element => {
-  if (false) {
-    return (
-      <div className="w-full h-48 flex justify-center items-center">
-        <Spinner size="lg" />
-      </div>
-    )
-  }
+  // return (
+  //   <div className="w-full h-48 flex justify-center items-center">
+  //     <Spinner size="lg" />
+  //   </div>
+  // )
 
   return (
     <>
