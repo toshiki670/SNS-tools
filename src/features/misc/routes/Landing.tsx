@@ -4,10 +4,10 @@ import logo from '@/assets/logo.svg'
 import { Button } from '@/components/Elements'
 import { Head } from '@/components/Head'
 
-export const Landing = () => {
+export const Landing = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const handleStart = () => {
+  const handleStart = (): void => {
     navigate('/')
   }
 

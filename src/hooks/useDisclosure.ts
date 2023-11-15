@@ -1,6 +1,11 @@
 import * as React from 'react'
 
-export const useDisclosure = (initial = false) => {
+export const useDisclosure = (initial = false): {
+  isOpen: boolean
+  open: () => void
+  close: () => void
+  toggle: () => void
+} => {
   const [isOpen, setIsOpen] = React.useState(initial)
 
   const open = React.useCallback(() => { setIsOpen(true) }, [])

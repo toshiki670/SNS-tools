@@ -23,7 +23,7 @@ export const ConfirmationDialog = ({
   cancelButtonText = 'Cancel',
   icon = 'danger',
   isDone = false
-}: ConfirmationDialogProps) => {
+}: ConfirmationDialogProps): JSX.Element => {
   const { close, open, isOpen } = useDisclosure()
 
   const cancelButtonRef = React.useRef(null)

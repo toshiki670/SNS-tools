@@ -1,6 +1,6 @@
 import { useRoutes, Navigate, Outlet } from 'react-router-dom'
 
-import { Landing, Dashboard } from '@/features/misc'
+import { Dashboard } from '@/features/misc'
 
 import { MainLayout } from '@/components/Layout'
 

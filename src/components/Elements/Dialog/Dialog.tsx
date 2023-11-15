@@ -12,7 +12,7 @@ export const DialogTitle = UIDialog.Title
 
 export const DialogDescription = UIDialog.Description
 
-export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps) => {
+export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps): JSX.Element => {
   return (
     <>
       <Transition.Root show={isOpen} as={React.Fragment}>

@@ -18,7 +18,7 @@ interface SideNavigationItem {
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
 }
 
-const SideNavigation = () => {
+const SideNavigation = (): JSX.Element => {
   const navigationItems = [
     { name: 'Dashboard', to: '.', icon: HomeIcon },
     { name: 'X(Twitter)', to: './x', icon: ChatBubbleBottomCenterTextIcon },,
@@ -59,7 +59,7 @@ interface UserNavigationItem {
   onClick?: () => void
 }
 
-const UserNavigation = () => {
+const UserNavigation = (): JSX.Element => {
   const userNavigationItems = [
     { name: 'Your Profile', to: './profile' }
   ].filter(Boolean) as UserNavigationItem[]
@@ -183,7 +183,7 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
   )
 }
 
-const Sidebar = () => {
+const Sidebar = (): JSX.Element => {
   return (
     <div className="hidden md:flex md:flex-shrink-0">
       <div className="flex flex-col w-64">
@@ -202,7 +202,7 @@ const Sidebar = () => {
   )
 }
 
-const Logo = () => {
+const Logo = (): JSX.Element => {
   return (
     <Link className="flex items-center text-white" to=".">
       <img className="h-8 w-auto" src={logo} alt="Workflow" />
@@ -215,7 +215,7 @@ interface MainLayoutProps {
   children: React.ReactNode
 }
 
-export const MainLayout = ({ children }: MainLayoutProps) => {
+export const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
 
   return (

@@ -18,7 +18,7 @@ export interface SpinnerProps {
   className?: string
 }
 
-export const Spinner = ({ size = 'md', variant = 'primary', className = '' }: SpinnerProps) => {
+export const Spinner = ({ size = 'md', variant = 'primary', className = '' }: SpinnerProps): JSX.Element => {
   return (
     <>
       <svg
