@@ -1,28 +1,28 @@
-import { Dialog, Menu, Transition } from '@headlessui/react';
+import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   ChatBubbleBottomCenterTextIcon,
   HomeIcon,
   Bars3Icon,
   XCircleIcon,
-  AdjustmentsHorizontalIcon,
-} from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import * as React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+  AdjustmentsHorizontalIcon
+} from '@heroicons/react/24/outline'
+import clsx from 'clsx'
+import * as React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
-import logo from '@/assets/react.svg';
+import logo from '@/assets/react.svg'
 
-type SideNavigationItem = {
-  name: string;
-  to: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
-};
+interface SideNavigationItem {
+  name: string
+  to: string
+  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+}
 
-const SideNavigation = () => {
+const SideNavigation = (): JSX.Element => {
   const navigationItems = [
     { name: 'Dashboard', to: '.', icon: HomeIcon },
-    { name: 'X(Twitter)', to: './x', icon: ChatBubbleBottomCenterTextIcon },,
-  ].filter(Boolean) as SideNavigationItem[];
+    { name: 'X(Twitter)', to: './x', icon: ChatBubbleBottomCenterTextIcon }
+  ].filter(Boolean) as SideNavigationItem[]
 
   return (
     <>
@@ -33,9 +33,9 @@ const SideNavigation = () => {
           to={item.to}
           className={({ isActive }) =>
             clsx([
-              isActive ? "bg-gray-900 text-white" : "",
+              isActive ? 'bg-gray-900 text-white' : '',
               'text-gray-300 hover:bg-gray-700 hover:text-white',
-              'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+              'group flex items-center px-2 py-2 text-base font-medium rounded-md'
             ])
           }
         >
@@ -50,20 +50,19 @@ const SideNavigation = () => {
         </NavLink>
       ))}
     </>
-  );
-};
+  )
+}
 
-type UserNavigationItem = {
-  name: string;
-  to: string;
-  onClick?: () => void;
-};
+interface UserNavigationItem {
+  name: string
+  to: string
+  onClick?: () => void
+}
 
-const UserNavigation = () => {
-
+const UserNavigation = (): JSX.Element => {
   const userNavigationItems = [
-    { name: 'Your Profile', to: './profile' },
-  ].filter(Boolean) as UserNavigationItem[];
+    { name: 'Your Profile', to: './profile' }
+  ].filter(Boolean) as UserNavigationItem[]
 
   return (
     <Menu as="div" className="ml-3 relative">
@@ -110,15 +109,15 @@ const UserNavigation = () => {
         </>
       )}
     </Menu>
-  );
-};
+  )
+}
 
-type MobileSidebarProps = {
-  sidebarOpen: boolean;
-  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
+interface MobileSidebarProps {
+  sidebarOpen: boolean
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
+const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps): JSX.Element => {
   return (
     <Transition.Root show={sidebarOpen} as={React.Fragment}>
       <Dialog
@@ -161,7 +160,7 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
               <div className="absolute top-0 right-0 -mr-12 pt-2">
                 <button
                   className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => { setSidebarOpen(false) }}
                 >
                   <span className="sr-only">Close sidebar</span>
                   <XCircleIcon className="h-6 w-6 text-white" aria-hidden="true" />
@@ -181,10 +180,10 @@ const MobileSidebar = ({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) => {
         <div className="flex-shrink-0 w-14" aria-hidden="true"></div>
       </Dialog>
     </Transition.Root>
-  );
-};
+  )
+}
 
-const Sidebar = () => {
+const Sidebar = (): JSX.Element => {
   return (
     <div className="hidden md:flex md:flex-shrink-0">
       <div className="flex flex-col w-64">
@@ -200,24 +199,24 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-const Logo = () => {
+const Logo = (): JSX.Element => {
   return (
     <Link className="flex items-center text-white" to=".">
       <img className="h-8 w-auto" src={logo} alt="Workflow" />
       <span className="text-xl text-white font-semibold">SNS Tools</span>
     </Link>
-  );
-};
+  )
+}
 
-type MainLayoutProps = {
-  children: React.ReactNode;
-};
+interface MainLayoutProps {
+  children: React.ReactNode
+}
 
-export const MainLayout = ({ children }: MainLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+export const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
+  const [sidebarOpen, setSidebarOpen] = React.useState(false)
 
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
@@ -227,7 +226,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
           <button
             className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
-            onClick={() => setSidebarOpen(true)}
+            onClick={() => { setSidebarOpen(true) }}
           >
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -241,5 +240,5 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         <main className="flex-1 relative overflow-y-auto focus:outline-none">{children}</main>
       </div>
     </div>
-  );
-};
+  )
+}

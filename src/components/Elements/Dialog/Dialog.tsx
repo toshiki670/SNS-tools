@@ -1,18 +1,18 @@
-import { Dialog as UIDialog, Transition } from '@headlessui/react';
-import * as React from 'react';
+import { Dialog as UIDialog, Transition } from '@headlessui/react'
+import * as React from 'react'
 
-type DialogProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  initialFocus?: React.MutableRefObject<null>;
-};
+interface DialogProps {
+  isOpen: boolean
+  onClose: () => void
+  children: React.ReactNode
+  initialFocus?: React.MutableRefObject<null>
+}
 
-export const DialogTitle = UIDialog.Title;
+export const DialogTitle = UIDialog.Title
 
-export const DialogDescription = UIDialog.Description;
+export const DialogDescription = UIDialog.Description
 
-export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps) => {
+export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps): JSX.Element => {
   return (
     <>
       <Transition.Root show={isOpen} as={React.Fragment}>
@@ -56,5 +56,5 @@ export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps)
         </UIDialog>
       </Transition.Root>
     </>
-  );
-};
+  )
+}

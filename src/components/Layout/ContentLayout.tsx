@@ -1,13 +1,13 @@
-import * as React from 'react';
+import type * as React from 'react'
 
-import { Head } from '../Head';
+import { Head } from '../Head'
 
-type ContentLayoutProps = {
-  children: React.ReactNode;
-  title: string;
-};
+interface ContentLayoutProps {
+  children: React.ReactNode
+  title: string
+}
 
-export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
+export const ContentLayout = ({ children, title }: ContentLayoutProps): JSX.Element => {
   return (
     <>
       <Head title={title} />
@@ -18,5 +18,5 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">{children}</div>
       </div>
     </>
-  );
-};
+  )
+}

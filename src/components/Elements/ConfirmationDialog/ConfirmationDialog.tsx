@@ -1,19 +1,19 @@
-import { ExclamationTriangleIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
-import * as React from 'react';
+import { ExclamationTriangleIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import * as React from 'react'
 
-import { Button } from '@/components/Elements/Button';
-import { Dialog, DialogTitle } from '@/components/Elements/Dialog';
-import { useDisclosure } from '@/hooks/useDisclosure';
+import { Button } from '@/components/Elements/Button'
+import { Dialog, DialogTitle } from '@/components/Elements/Dialog'
+import { useDisclosure } from '@/hooks/useDisclosure'
 
-export type ConfirmationDialogProps = {
-  triggerButton: React.ReactElement;
-  confirmButton: React.ReactElement;
-  title: string;
-  body?: string;
-  cancelButtonText?: string;
-  icon?: 'danger' | 'info';
-  isDone?: boolean;
-};
+export interface ConfirmationDialogProps {
+  triggerButton: React.ReactElement
+  confirmButton: React.ReactElement
+  title: string
+  body?: string
+  cancelButtonText?: string
+  icon?: 'danger' | 'info'
+  isDone?: boolean
+}
 
 export const ConfirmationDialog = ({
   triggerButton,
@@ -22,21 +22,21 @@ export const ConfirmationDialog = ({
   body = '',
   cancelButtonText = 'Cancel',
   icon = 'danger',
-  isDone = false,
-}: ConfirmationDialogProps) => {
-  const { close, open, isOpen } = useDisclosure();
+  isDone = false
+}: ConfirmationDialogProps): JSX.Element => {
+  const { close, open, isOpen } = useDisclosure()
 
-  const cancelButtonRef = React.useRef(null);
+  const cancelButtonRef = React.useRef(null)
 
   React.useEffect(() => {
     if (isDone) {
-      close();
+      close()
     }
-  }, [isDone, close]);
+  }, [isDone, close])
 
   const trigger = React.cloneElement(triggerButton, {
-    onClick: open,
-  });
+    onClick: open
+  })
 
   return (
     <>
@@ -59,7 +59,7 @@ export const ConfirmationDialog = ({
               <DialogTitle as="h3" className="text-lg leading-6 font-medium text-gray-900">
                 {title}
               </DialogTitle>
-              {body && (
+              {body != null && (
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{body}</p>
                 </div>
@@ -81,5 +81,5 @@ export const ConfirmationDialog = ({
         </div>
       </Dialog>
     </>
-  );
-};
+  )
+}
