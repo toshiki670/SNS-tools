@@ -7,7 +7,7 @@ interface ContentLayoutProps {
   title: string
 }
 
-export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
+export const ContentLayout = ({ children, title }: ContentLayoutProps): JSX.Element => {
   return (
     <>
       <Head title={title} />

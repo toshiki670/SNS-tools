@@ -59,7 +59,7 @@ export const ConfirmationDialog = ({
               <DialogTitle as="h3" className="text-lg leading-6 font-medium text-gray-900">
                 {title}
               </DialogTitle>
-              {body && (
+              {body != null && (
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{body}</p>
                 </div>
