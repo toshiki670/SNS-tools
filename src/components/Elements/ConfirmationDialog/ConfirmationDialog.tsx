@@ -1,42 +1,45 @@
-import { ExclamationTriangleIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
-import * as React from 'react'
+import {
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/24/outline";
+import * as React from "react";
 
-import { Button } from '@/components/Elements/Button'
-import { Dialog, DialogTitle } from '@/components/Elements/Dialog'
-import { useDisclosure } from '@/hooks/useDisclosure'
+import { Button } from "@/components/Elements/Button";
+import { Dialog, DialogTitle } from "@/components/Elements/Dialog";
+import { useDisclosure } from "@/hooks/useDisclosure";
 
 export interface ConfirmationDialogProps {
-  triggerButton: React.ReactElement
-  confirmButton: React.ReactElement
-  title: string
-  body?: string
-  cancelButtonText?: string
-  icon?: 'danger' | 'info'
-  isDone?: boolean
+  triggerButton: React.ReactElement;
+  confirmButton: React.ReactElement;
+  title: string;
+  body?: string;
+  cancelButtonText?: string;
+  icon?: "danger" | "info";
+  isDone?: boolean;
 }
 
 export const ConfirmationDialog = ({
   triggerButton,
   confirmButton,
   title,
-  body = '',
-  cancelButtonText = 'Cancel',
-  icon = 'danger',
-  isDone = false
+  body = "",
+  cancelButtonText = "Cancel",
+  icon = "danger",
+  isDone = false,
 }: ConfirmationDialogProps): JSX.Element => {
-  const { close, open, isOpen } = useDisclosure()
+  const { close, open, isOpen } = useDisclosure();
 
-  const cancelButtonRef = React.useRef(null)
+  const cancelButtonRef = React.useRef(null);
 
   React.useEffect(() => {
     if (isDone) {
-      close()
+      close();
     }
-  }, [isDone, close])
+  }, [isDone, close]);
 
   const trigger = React.cloneElement(triggerButton, {
-    onClick: open
-  })
+    onClick: open,
+  });
 
   return (
     <>
@@ -44,19 +47,28 @@ export const ConfirmationDialog = ({
       <Dialog isOpen={isOpen} onClose={close} initialFocus={cancelButtonRef}>
         <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
           <div className="sm:flex sm:items-start">
-            {icon === 'danger' && (
+            {icon === "danger" && (
               <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+                <ExclamationTriangleIcon
+                  className="h-6 w-6 text-red-600"
+                  aria-hidden="true"
+                />
               </div>
             )}
 
-            {icon === 'info' && (
+            {icon === "info" && (
               <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
-                <InformationCircleIcon className="h-6 w-6 text-blue-600" aria-hidden="true" />
+                <InformationCircleIcon
+                  className="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                />
               </div>
             )}
             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <DialogTitle as="h3" className="text-lg leading-6 font-medium text-gray-900">
+              <DialogTitle
+                as="h3"
+                className="text-lg leading-6 font-medium text-gray-900"
+              >
                 {title}
               </DialogTitle>
               {body != null && (
@@ -81,5 +93,5 @@ export const ConfirmationDialog = ({
         </div>
       </Dialog>
     </>
-  )
-}
+  );
+};
