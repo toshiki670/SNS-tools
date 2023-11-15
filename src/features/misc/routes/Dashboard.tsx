@@ -1,4 +1,4 @@
-import { ContentLayout } from '@/components/Layout';
+import { ContentLayout } from '@/components/Layout'
 
 export const Dashboard = () => {
   return (
@@ -7,5 +7,5 @@ export const Dashboard = () => {
         Welcome
       </h1>
     </ContentLayout>
-  );
-};
+  )
+}

@@ -3,5 +3,8 @@
   "files.autoSave": "afterDelay",
   "files.associations": {
     "*.css": "tailwindcss"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }

@@ -12,8 +12,8 @@ const App = (): JSX.Element => {
     <MainLayout>
       <Outlet />
     </MainLayout>
-  );
-};
+  )
+}
 
 export const AppRoutes = (): JSX.Element => {
   const element = useRoutes([
@@ -24,9 +24,9 @@ export const AppRoutes = (): JSX.Element => {
         { path: '/x', element: <XRoutes /> },
         { path: '/', element: <Dashboard /> },
         { path: '*', element: <Navigate to="." /> }
-      ],
-    },
-  ]);
+      ]
+    }
+  ])
 
   return <>{element}</>
 }
