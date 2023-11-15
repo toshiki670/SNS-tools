@@ -38,7 +38,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       endIcon,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <button
@@ -48,7 +48,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "flex justify-center items-center border border-gray-300 disabled:opacity-70 disabled:cursor-not-allowed rounded-md shadow-sm font-medium focus:outline-none hover:opacity-80",
           variants[variant],
           sizes[size],
-          className,
+          className
         )}
         {...props}
       >
@@ -57,7 +57,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <span className="mx-2">{props.children}</span> {!isLoading && endIcon}
       </button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

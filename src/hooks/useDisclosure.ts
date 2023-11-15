@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const useDisclosure = (
-  initial = false,
+  initial = false
 ): {
   isOpen: boolean;
   open: () => void;

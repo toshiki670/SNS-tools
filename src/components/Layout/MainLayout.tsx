@@ -42,7 +42,7 @@ const SideNavigation = (): JSX.Element => {
           <item.icon
             className={clsx(
               "text-gray-400 group-hover:text-gray-300",
-              "mr-4 flex-shrink-0 h-6 w-6",
+              "mr-4 flex-shrink-0 h-6 w-6"
             )}
             aria-hidden="true"
           />
@@ -96,7 +96,7 @@ const UserNavigation = (): JSX.Element => {
                       to={item.to}
                       className={clsx(
                         active ? "bg-gray-100" : "",
-                        "block px-4 py-2 text-sm text-gray-700",
+                        "block px-4 py-2 text-sm text-gray-700"
                       )}
                     >
                       {item.name}
