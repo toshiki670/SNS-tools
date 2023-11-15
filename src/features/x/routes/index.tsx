@@ -1,6 +1,6 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { ListBlocker } from './ListBlocker';
+import { ListBlocker } from './ListBlocker'
 
 export const XRoutes = () => {
   return (
@@ -8,5 +8,5 @@ export const XRoutes = () => {
       <Route path="list_blocker" element={<ListBlocker />} />
       <Route path="*" element={<Navigate to="." />} />
     </Routes>
-  );
-};
+  )
+}

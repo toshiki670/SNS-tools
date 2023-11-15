@@ -1,11 +1,10 @@
-import { useRoutes, Navigate, Outlet } from 'react-router-dom';
+import { useRoutes, Navigate, Outlet } from 'react-router-dom'
 
-import { Landing } from '@/features/misc';
+import { Landing, Dashboard } from '@/features/misc'
 
-import { MainLayout } from '@/components/Layout';
+import { MainLayout } from '@/components/Layout'
 
-import { Dashboard } from '@/features/misc';
-import { XRoutes } from '@/features/x';
+import { XRoutes } from '@/features/x'
 
 const App = (): JSX.Element => {
   return (
