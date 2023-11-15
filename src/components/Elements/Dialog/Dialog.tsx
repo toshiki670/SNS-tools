@@ -1,18 +1,23 @@
-import { Dialog as UIDialog, Transition } from '@headlessui/react'
-import * as React from 'react'
+import { Dialog as UIDialog, Transition } from "@headlessui/react";
+import * as React from "react";
 
 interface DialogProps {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-  initialFocus?: React.MutableRefObject<null>
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  initialFocus?: React.MutableRefObject<null>;
 }
 
-export const DialogTitle = UIDialog.Title
+export const DialogTitle = UIDialog.Title;
 
-export const DialogDescription = UIDialog.Description
+export const DialogDescription = UIDialog.Description;
 
-export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps): JSX.Element => {
+export const Dialog = ({
+  isOpen,
+  onClose,
+  children,
+  initialFocus,
+}: DialogProps): JSX.Element => {
   return (
     <>
       <Transition.Root show={isOpen} as={React.Fragment}>
@@ -38,7 +43,10 @@ export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps)
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+            <span
+              className="hidden sm:inline-block sm:align-middle sm:h-screen"
+              aria-hidden="true"
+            >
               &#8203;
             </span>
             <Transition.Child
@@ -56,5 +64,5 @@ export const Dialog = ({ isOpen, onClose, children, initialFocus }: DialogProps)
         </UIDialog>
       </Transition.Root>
     </>
-  )
-}
+  );
+};
