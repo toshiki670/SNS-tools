@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/react.svg";
 import { Button } from "@/components/Elements";
 import { Head } from "@/components/Head";
 
