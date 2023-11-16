@@ -21,3 +21,28 @@ yarn tauri dev
 ## Reference
 
 <https://heroicons.com>
+
+## Update
+
+### Backend
+
+```text
+cd src-tauri
+rustup update
+```
+
+[crates](https://crates.io) で最新バージョンを確認
+
+```test
+cargo update
+```
+
+### Frontend
+
+```test
+yarn upgrade --latest
+
+# or
+
+yarn upgrade-interactive
+```
