@@ -1,13 +1,10 @@
-import { type Meta, type Story } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
 import { Button } from "../Button";
 
-import {
-  ConfirmationDialog,
-  type ConfirmationDialogProps,
-} from "./ConfirmationDialog";
+import { ConfirmationDialog } from "./ConfirmationDialog";
 
-const meta: Meta = {
+const meta: Meta<typeof ConfirmationDialog> = {
   title: "Components/Elements/ConfirmationDialog",
   component: ConfirmationDialog,
   parameters: {
@@ -16,25 +13,24 @@ const meta: Meta = {
 };
 
 export default meta;
+type Story = StoryObj<typeof ConfirmationDialog>;
 
-const Template: Story<ConfirmationDialogProps> = (props) => (
-  <ConfirmationDialog {...props} />
-);
-
-export const Danger = Template.bind({});
-Danger.args = {
-  icon: "danger",
-  title: "Confirmation",
-  body: "Hello World",
-  confirmButton: <Button className="bg-red-500">Confirm</Button>,
-  triggerButton: <Button>Open</Button>,
+export const Danger: Story = {
+  args: {
+    icon: "danger",
+    title: "Confirmation",
+    body: "Hello World",
+    confirmButton: <Button className="bg-red-500">Confirm</Button>,
+    triggerButton: <Button>Open</Button>,
+  },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  icon: "info",
-  title: "Confirmation",
-  body: "Hello World",
-  confirmButton: <Button>Confirm</Button>,
-  triggerButton: <Button>Open</Button>,
+export const Info: Story = {
+  args: {
+    icon: "info",
+    title: "Confirmation",
+    body: "Hello World",
+    confirmButton: <Button>Confirm</Button>,
+    triggerButton: <Button>Open</Button>,
+  },
 };
