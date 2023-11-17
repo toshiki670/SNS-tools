@@ -7,6 +7,7 @@ export default {
   parameters: {
     controls: { expanded: true },
   },
+  tags: ["autodocs"],
 } satisfies Meta<typeof Spinner>;
 
 type Story = StoryObj<typeof Spinner>;

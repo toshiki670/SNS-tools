@@ -12,6 +12,7 @@ export default {
   parameters: {
     controls: { expanded: true },
   },
+  tags: ["autodocs"],
 } satisfies Meta<typeof Dialog>;
 
 export const Demo: Story = () => {

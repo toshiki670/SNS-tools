@@ -9,6 +9,7 @@ export default {
   parameters: {
     controls: { expanded: true },
   },
+  tags: ["autodocs"],
 } satisfies Meta<typeof ConfirmationDialog>;
 
 type Story = StoryObj<typeof ConfirmationDialog>;
