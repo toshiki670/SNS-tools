@@ -1,17 +1,14 @@
-import { type Meta, type Story } from "@storybook/react";
+import { type Meta, type StoryObj } from "@storybook/react";
 
-import { Spinner, type SpinnerProps } from "./Spinner";
+import { Spinner } from "./Spinner";
 
-const meta: Meta = {
+export default {
   component: Spinner,
   parameters: {
     controls: { expanded: true },
   },
-};
+} satisfies Meta<typeof Spinner>;
 
-export default meta;
+type Story = StoryObj<typeof Spinner>;
 
-const Template: Story<SpinnerProps> = (props) => <Spinner {...props} />;
-
-export const Default = Template.bind({});
-Default.args = {};
+export const Template: Story = {};
