@@ -3,7 +3,6 @@ import { type Meta, type StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
 export default {
-  title: "Components/Elements/Button",
   component: Button,
   parameters: {
     controls: { expanded: true },

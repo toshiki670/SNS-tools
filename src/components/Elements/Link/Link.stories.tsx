@@ -3,7 +3,6 @@ import { type Meta, type StoryObj } from "@storybook/react";
 import { Link } from "./Link";
 
 const meta: Meta<typeof Link> = {
-  title: "Components/Elements/Link",
   component: Link,
   parameters: {
     controls: { expanded: true },

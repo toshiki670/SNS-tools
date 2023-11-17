@@ -8,7 +8,6 @@ import { Button } from "../Button";
 import { Dialog, DialogTitle } from "./Dialog";
 
 const meta: Meta<typeof Dialog> = {
-  title: "Components/Elements/Dialog",
   component: Dialog,
   parameters: {
     controls: { expanded: true },

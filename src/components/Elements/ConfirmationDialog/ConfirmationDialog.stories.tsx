@@ -5,7 +5,6 @@ import { Button } from "../Button";
 import { ConfirmationDialog } from "./ConfirmationDialog";
 
 const meta: Meta<typeof ConfirmationDialog> = {
-  title: "Components/Elements/ConfirmationDialog",
   component: ConfirmationDialog,
   parameters: {
     controls: { expanded: true },
