@@ -219,11 +219,11 @@ const Logo = (): JSX.Element => {
   );
 };
 
-interface MainLayoutProps {
+interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export const MainLayout = ({ children }: MainLayoutProps): JSX.Element => {
+export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
