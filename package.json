@@ -30,7 +30,6 @@
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
     "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/blocks": "^7.5.3",
     "@storybook/node-logger": "^7.5.3",
     "@storybook/preset-create-react-app": "^7.5.3",
