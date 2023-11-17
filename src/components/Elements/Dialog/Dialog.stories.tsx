@@ -7,15 +7,13 @@ import { Button } from "../Button";
 
 import { Dialog, DialogTitle } from "./Dialog";
 
-const meta: Meta<typeof Dialog> = {
-  title: "Components/Elements/Dialog",
+export default {
   component: Dialog,
   parameters: {
     controls: { expanded: true },
   },
-};
-
-export default meta;
+  tags: ["autodocs"],
+} satisfies Meta<typeof Dialog>;
 
 export const Demo: Story = () => {
   const { close, open, isOpen } = useDisclosure();

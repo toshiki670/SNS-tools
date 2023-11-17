@@ -4,15 +4,14 @@ import { Button } from "../Button";
 
 import { ConfirmationDialog } from "./ConfirmationDialog";
 
-const meta: Meta<typeof ConfirmationDialog> = {
-  title: "Components/Elements/ConfirmationDialog",
+export default {
   component: ConfirmationDialog,
   parameters: {
     controls: { expanded: true },
   },
-};
+  tags: ["autodocs"],
+} satisfies Meta<typeof ConfirmationDialog>;
 
-export default meta;
 type Story = StoryObj<typeof ConfirmationDialog>;
 
 export const Danger: Story = {
