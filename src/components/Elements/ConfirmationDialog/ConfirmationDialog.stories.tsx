@@ -4,14 +4,13 @@ import { Button } from "../Button";
 
 import { ConfirmationDialog } from "./ConfirmationDialog";
 
-const meta: Meta<typeof ConfirmationDialog> = {
+export default {
   component: ConfirmationDialog,
   parameters: {
     controls: { expanded: true },
   },
-};
+} satisfies Meta<typeof ConfirmationDialog>;
 
-export default meta;
 type Story = StoryObj<typeof ConfirmationDialog>;
 
 export const Danger: Story = {
