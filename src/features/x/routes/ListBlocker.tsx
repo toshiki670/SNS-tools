@@ -18,7 +18,7 @@ export const ListBlocker = (): JSX.Element => {
   useEffect(() => {
     const test = async (): Promise<void> => {
       try {
-        const result = await tauriClient.query(["app.getAppName"]);
+        const result = await tauriClient.query(["app.getAppName", "aaa"]);
         setData(result);
       } catch (err) {
         setData("err");
