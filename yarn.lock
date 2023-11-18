@@ -1961,10 +1961,10 @@
   resolved "https://registry.yarnpkg.com/@rspc/client/-/client-0.1.3.tgz#e1352e756dbe840ee6bf88cc0a7df8fe658bf574"
   integrity sha512-3rsnmqm5G9fwtfV0HNPj4a70YTHUiw+hhC8RpyMPwOxn6pubCCVVbt58EN+eNaUICqs6DUAT/06SBNwVTRkkLg==
 
-"@rspc/react@^0.1.3":
+"@rspc/tauri@^0.1.3":
   version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@rspc/react/-/react-0.1.3.tgz#1707fa08cc7ab053557ee41eb342d6752ba4a32d"
-  integrity sha512-JqdsM99QMZTTfrQHqhMAF98Qeuhym8G7DtABfb8F7a9iRjwGiF1eFqWtra3N85BOzr9vurbfwz7TmiTvg5HR7A==
+  resolved "https://registry.yarnpkg.com/@rspc/tauri/-/tauri-0.1.3.tgz#3e279b1bb021ee353ebbd57362155efadfe07629"
+  integrity sha512-4IFpZEU0LSZhmazUmxqvPSFvs3lJ4JuY/L9ClCBP4OUyzfQG36IuiYqQSBHZNABAi6XPTRv9+7SVqxj2+zOF0Q==
   dependencies:
     "@rspc/client" "0.1.3"
 
