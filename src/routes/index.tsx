@@ -19,8 +19,8 @@ export const AppRoutes = (): JSX.Element => {
       path: "/",
       element: <App />,
       children: [
-        { path: "/x", element: <XRoutes /> },
-        { path: "/", element: <Dashboard /> },
+        { path: "/x", ...XRoutes },
+        { path: "/", ...Dashboard },
         { path: "*", element: <Navigate to="." /> },
       ],
     },
