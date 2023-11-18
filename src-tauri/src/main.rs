@@ -7,9 +7,14 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
-fn main() {
+mod router;
+
+#[tokio::main]
+async fn main() {
+    // let router = <Router>::new().build();
+
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .plugin(rspc::integrations::tauri::plugin(router::mount(), || ()))
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
