@@ -1,9 +1,8 @@
 import { useRoutes, Navigate, Outlet } from "react-router-dom";
 
-import { Dashboard } from "@/features/misc";
-
 import { AppLayout } from "@/components/Layout";
 
+import { Dashboard } from "@/features/misc";
 import { XRoutes } from "@/features/x";
 
 const App = (): JSX.Element => {
