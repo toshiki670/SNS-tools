@@ -16,8 +16,13 @@ tauri-build = { version = "1.5", features = [] }
 tauri = { version = "1.5", features = ["shell-open"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-rspc = { version = "0.1.3", features = ["tauri"] } # https://github.com/oscartbeaumont/rspc
-tokio = { version = "1.34.0", features = ["full"] }
+
+# https://github.com/oscartbeaumont/rspc
+rspc = { version = "0.1", features = ["tauri"] }
+
+# https://crates.io/crates/tokio
+# https://github.com/tokio-rs/tokio
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

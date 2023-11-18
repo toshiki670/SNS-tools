@@ -1,11 +1,8 @@
 use std::sync::Arc;
 
-mod app;
+use rspc::Router;
 
-pub type Router = rspc::Router;
-pub(crate) type RouterBuilder = rspc::RouterBuilder;
-
-pub(crate) fn mount() -> Arc<Router> {
+pub(crate) fn router() -> Arc<Router> {
     let config = rspc::Config::new().set_ts_bindings_header("/* eslint-disable */");
 
     let config = config.export_ts_bindings(
@@ -14,7 +11,7 @@ pub(crate) fn mount() -> Arc<Router> {
 
     Router::new()
         .config(config)
-        .merge("app.", app::mount())
+        .merge("x.", crate::x::router::router())
         .build()
         .arced()
 }
