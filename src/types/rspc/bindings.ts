@@ -3,7 +3,8 @@
 
 export type Procedures = {
     queries: 
-        { key: "app.getAppName", input: string, result: string },
+        { key: "x.getAppName", input: string, result: string } | 
+        { key: "x.getAppName2", input: string, result: string },
     mutations: never,
     subscriptions: never
 };
