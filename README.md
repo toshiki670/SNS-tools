@@ -9,11 +9,40 @@ This template should help get you started developing with Tauri and Yew.
 ## Preparation
 
 ```text
-yarn global add tailwindcss
+yarn
 ```
 
 ## To get started run
 
 ```text
-cargo tauri dev
+yarn tauri dev
+```
+
+## Reference
+
+<https://heroicons.com>
+
+## Update
+
+### Backend
+
+```text
+cd src-tauri
+rustup update
+```
+
+[crates](https://crates.io) で最新バージョンを確認
+
+```test
+cargo update
+```
+
+### Frontend
+
+```test
+yarn upgrade --latest
+
+# or
+
+yarn upgrade-interactive
 ```
