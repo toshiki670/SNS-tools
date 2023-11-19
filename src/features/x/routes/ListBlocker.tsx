@@ -25,7 +25,7 @@ export const ListBlocker = (): JSX.Element => {
       }
     };
     void test();
-  }, []);
+  });
 
   return (
     <>
