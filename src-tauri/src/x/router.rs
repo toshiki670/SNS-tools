@@ -1,13 +1,14 @@
-use rspc::RouterBuilder;
+use crate::base_ctx::BaseCtx;
+use crate::router::RouterBuilder;
 
 use super::client;
 
-pub(crate) fn router() -> RouterBuilder {
+pub fn router() -> RouterBuilder {
     RouterBuilder::new()
         .query("getAppName", |t| {
-            t(|_: (), _: ()| async { client::call().await.unwrap() })
+            t(|_: BaseCtx, _: ()| async { client::call().await.unwrap() })
         })
         .query("getAppName2", |t| {
-            t(|_: (), s: String| Ok(format!("rspc Test Project: {}", s)))
+            t(|_: BaseCtx, s: String| Ok(format!("rspc Test Project: {}", s)))
         })
 }
