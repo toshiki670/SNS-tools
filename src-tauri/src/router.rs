@@ -1,8 +1,11 @@
 use std::sync::Arc;
 
-use rspc::Router;
+use crate::base_ctx::BaseCtx;
 
-pub(crate) fn router() -> Arc<Router> {
+pub type Router = rspc::Router<BaseCtx>;
+pub type RouterBuilder = rspc::RouterBuilder<BaseCtx>;
+
+pub fn router() -> Arc<Router> {
     let config = rspc::Config::new().set_ts_bindings_header("/* eslint-disable */");
 
     let config = config.export_ts_bindings(
