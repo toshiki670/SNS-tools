@@ -20,7 +20,7 @@ export const ListBlocker = (): JSX.Element => {
   useEffect(() => {
     const test = async (): Promise<void> => {
       try {
-        await invoke("tauri_api");
+        await invoke("x_get_api");
         setData("OK");
       } catch (err) {
         setData("err");
