@@ -1,7 +1,11 @@
 // https://docs.rs/tauri/1.5.2/tauri/api/http/struct.HttpRequestBuilder.html
 
-use log::info;
-use tauri::api::http::{Client, ClientBuilder, HttpRequestBuilder, ResponseType};
+use log::{error, info};
+use serde_json::Value;
+use tauri::api::{
+    http::{Client, ClientBuilder, HttpRequestBuilder, Response, ResponseType},
+    Error,
+};
 
 pub struct XClient {
     client: Client,
@@ -18,17 +22,32 @@ impl XClient {
         Self { client }
     }
 
-    pub async fn tauri_api(&self) -> Result<serde_json::value::Value, tauri::api::Error> {
-        let request = HttpRequestBuilder::new("GET", "https://httpbin.org/ip")
-            .unwrap()
-            .response_type(ResponseType::Json);
+    pub async fn tauri_api(&self) -> Result<Value, Error> {
+        let request = request_builder("GET", "https://httpbin.org/ip")?;
+
+        info!("request info: {:?}", request);
 
         let response = self.client.send(request).await?;
-        info!("Status Code: {:?}", response.status());
 
-        let response_data = response.read().await?;
-        info!("Status Code: {:?}", response_data.data);
-
-        Ok(response_data.data)
+        process_response(response).await
     }
+}
+
+fn request_builder(method: &str, url: &str) -> Result<HttpRequestBuilder, Error> {
+    match HttpRequestBuilder::new(method, url) {
+        Ok(builder) => Ok(builder.response_type(ResponseType::Json)),
+        Err(err) => {
+            error!("method: {}, url: {}", method, url);
+            Err(err)
+        }
+    }
+}
+
+async fn process_response(response: Response) -> Result<Value, Error> {
+    info!("Status Code: {:?}", response.status());
+
+    let data = response.read().await?.data;
+
+    info!("Response Data: {:?}", data);
+    Ok(data)
 }
