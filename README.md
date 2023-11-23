@@ -46,3 +46,14 @@ yarn upgrade --latest
 
 yarn upgrade-interactive
 ```
+
+## Note
+
+### About RSPC
+
+Core と Frontend 型を共有するライブラリ
+インストールを試みた Commit ID は、以下の通り
+
+```text
+commit c56e1d66f69a1d40fa577a9264fe89d00f7a6999 (HEAD -> Use-tauri-url-client)
+```
