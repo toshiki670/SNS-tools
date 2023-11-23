@@ -8,7 +8,11 @@ mod x;
 #[tokio::main]
 async fn main() {
     tauri::Builder::default()
-        .plugin(rspc::integrations::tauri::plugin(router::router(), || base_ctx::BaseCtx::init()))
+        .manage(x::client::XClient::new())
+        .invoke_handler(tauri::generate_handler![x::command::x_get_api])
+        .plugin(rspc::integrations::tauri::plugin(router::router(), || {
+            base_ctx::BaseCtx::init()
+        }))
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
