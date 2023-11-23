@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import { tauriClient } from "@/utils/client";
-
 // import { Spinner } from '@/components/Elements'
 import { ContentLayout } from "@/components/Layout";
 // import { formatDate } from '@/utils/format';
+
+import { invoke } from "@tauri-apps/api/tauri";
 
 export const ListBlocker = (): JSX.Element => {
   // return (
@@ -18,8 +18,8 @@ export const ListBlocker = (): JSX.Element => {
   useEffect(() => {
     const test = async (): Promise<void> => {
       try {
-        const result = await tauriClient.query(["x.getAppName"]);
-        setData(result);
+        await invoke("x_get_api");
+        setData("OK");
       } catch (err) {
         setData("err");
       }
