@@ -14,7 +14,7 @@ tauri-build = { version = "1.5", features = [] }
 
 [dependencies]
 # https://crates.io/crates/tauri
-tauri = { version = "1.5", features = ["shell-open"] }
+tauri = { version = "1.5", features = [ "http-all", "shell-open"] }
 
 # https://crates.io/crates/serde
 serde = { version = "1.0", features = ["derive"] }
