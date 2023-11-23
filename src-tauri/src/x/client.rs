@@ -1,4 +1,6 @@
 // https://docs.rs/tauri/1.5.2/tauri/api/http/struct.HttpRequestBuilder.html
+
+use log::info;
 use tauri::api::http::{Client, ClientBuilder, HttpRequestBuilder, ResponseType};
 
 pub struct XClient {
@@ -22,10 +24,10 @@ impl XClient {
             .response_type(ResponseType::Json);
 
         let response = self.client.send(request).await?;
-        println!("Status Code: {:?}", response.status());
+        info!("Status Code: {:?}", response.status());
 
         let response_data = response.read().await?;
-        println!("Status Code: {:?}", response_data.data);
+        info!("Status Code: {:?}", response_data.data);
 
         Ok(response_data.data)
     }
