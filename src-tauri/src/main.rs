@@ -4,6 +4,9 @@
 mod x;
 
 fn main() {
+    std::env::set_var("RUST_LOG", log::Level::Trace.to_string());
+    env_logger::init();
+
     tauri::Builder::default()
         .manage(x::client::XClient::new())
         .invoke_handler(tauri::generate_handler![x::command::x_get_api])
