@@ -1,6 +1,6 @@
 // https://docs.rs/tauri/1.5.2/tauri/api/http/struct.HttpRequestBuilder.html
 
-use log::{error, info};
+use log::info;
 use serde_json::Value;
 use tauri::api::{
     http::{Client, ClientBuilder, HttpRequestBuilder, Response, ResponseType},
@@ -23,31 +23,34 @@ impl XClient {
     }
 
     pub async fn tauri_api(&self) -> Result<Value, Error> {
-        let request = request_builder("GET", "https://httpbin.org/ip")?;
-
-        info!("request info: {:?}", request);
+        let request =
+            Self::common_request(HttpRequestBuilder::new("GET", Self::url("ip")).unwrap());
 
         let response = self.client.send(request).await?;
 
-        process_response(response).await
+        Self::process_response(response).await
     }
 }
 
-fn request_builder(method: &str, url: &str) -> Result<HttpRequestBuilder, Error> {
-    match HttpRequestBuilder::new(method, url) {
-        Ok(builder) => Ok(builder.response_type(ResponseType::Json)),
-        Err(err) => {
-            error!("method: {}, url: {}", method, url);
-            Err(err)
-        }
+/// Private methods
+impl XClient {
+    const DOMAIN: &str = "httpbin.org";
+
+    fn url(path: &str) -> String {
+        format!("https://{}/{}", Self::DOMAIN, path)
     }
-}
 
-async fn process_response(response: Response) -> Result<Value, Error> {
-    info!("Status Code: {:?}", response.status());
+    fn common_request(request: HttpRequestBuilder) -> HttpRequestBuilder {
+        info!("request info: {:?}", request);
+        request.response_type(ResponseType::Json)
+    }
 
-    let data = response.read().await?.data;
+    async fn process_response(response: Response) -> Result<Value, Error> {
+        info!("Status Code: {:?}", response.status());
 
-    info!("Response Data: {:?}", data);
-    Ok(data)
+        let data = response.read().await?.data;
+
+        info!("Response Data: {:?}", data);
+        Ok(data)
+    }
 }
