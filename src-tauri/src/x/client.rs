@@ -1,5 +1,11 @@
 // https://docs.rs/tauri/1.5.2/tauri/api/http/struct.HttpRequestBuilder.html
+// https://developer.twitter.com/en/portal/dashboard
 
+// X認証、OAuth 1.0a のドキュメント
+// https://developer.twitter.com/ja/docs/authentication/oauth-1-0a
+
+// OAuth 1.0
+// https://qiita.com/TsutomuNakamura/items/a99b588df7035f772e02
 use log::info;
 use serde_json::Value;
 use tauri::api::{
