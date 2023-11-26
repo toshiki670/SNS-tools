@@ -40,15 +40,16 @@ impl XClient {
 
 /// Private methods
 impl XClient {
-    const DOMAIN: &str = "httpbin.org";
+    const DOMAIN: &str = "api.twitter.com";
 
     fn url(path: &str) -> String {
         format!("https://{}/{}", Self::DOMAIN, path)
     }
 
     fn common_request(request: HttpRequestBuilder) -> HttpRequestBuilder {
+        let request = request.response_type(ResponseType::Json);
         info!("request info: {:?}", request);
-        request.response_type(ResponseType::Json)
+        request
     }
 
     async fn process_response(response: Response) -> Result<Value, Error> {
