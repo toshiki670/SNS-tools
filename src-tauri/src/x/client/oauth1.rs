@@ -67,30 +67,22 @@ impl OAuth1 {
         let mut params: Vec<(&str, &str)> = params.into_iter().collect();
         params.sort();
 
+        let oauth_nonce = Self::percent_encode(oauth_nonce);
+        let oauth_callback = Self::percent_encode(oauth_callback);
+        let oauth_signature_method = Self::percent_encode(oauth_signature_method);
+        let oauth_timestamp = Self::percent_encode(oauth_timestamp);
+        let oauth_consumer_key = Self::percent_encode(oauth_consumer_key);
+        let oauth_signature = Self::percent_encode(oauth_signature);
+        let oauth_version = Self::percent_encode(oauth_version);
         let val = format!(
             "OAuth {}, {}, {}, {}, {}, {}, {}",
-            format!("oauth_nonce=\"{}\"", Self::percent_encode(oauth_nonce)),
-            format!(
-                "oauth_callback=\"{}\"",
-                Self::percent_encode(oauth_callback)
-            ),
-            format!(
-                "oauth_signature_method=\"{}\"",
-                Self::percent_encode(oauth_signature_method)
-            ),
-            format!(
-                "oauth_timestamp=\"{}\"",
-                Self::percent_encode(oauth_timestamp)
-            ),
-            format!(
-                "oauth_consumer_key=\"{}\"",
-                Self::percent_encode(oauth_consumer_key)
-            ),
-            format!(
-                "oauth_signature=\"{}\"",
-                Self::percent_encode(oauth_signature)
-            ),
-            format!("oauth_version=\"{}\"", Self::percent_encode(oauth_version))
+            format!("oauth_nonce=\"{oauth_nonce}\""),
+            format!("oauth_callback=\"{oauth_callback}\""),
+            format!("oauth_signature_method=\"{oauth_signature_method}\""),
+            format!("oauth_timestamp=\"{oauth_timestamp}\""),
+            format!("oauth_consumer_key=\"{oauth_consumer_key}\""),
+            format!("oauth_signature=\"{oauth_signature}\""),
+            format!("oauth_version=\"{oauth_version}\"")
         );
 
         let mut hedears = HeaderMap::new();
