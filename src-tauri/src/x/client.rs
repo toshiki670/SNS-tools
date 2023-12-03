@@ -13,19 +13,23 @@ use tauri::api::{
     Error,
 };
 
+pub mod oauth1;
+use oauth1::OAuth1;
+
 pub struct XClient {
     client: Client,
+    oauth1: OAuth1,
 }
 
 impl XClient {
-    pub fn new() -> Self {
+    pub fn new(oauth1: OAuth1) -> Self {
         let client = ClientBuilder::new()
             .max_redirections(3)
             .connect_timeout(std::time::Duration::from_secs(5))
             .build()
             .unwrap();
 
-        Self { client }
+        Self { client, oauth1 }
     }
 
     pub async fn tauri_api(&self) -> Result<Value, Error> {
