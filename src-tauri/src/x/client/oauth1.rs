@@ -26,11 +26,7 @@ pub struct OAuth1 {
 }
 
 impl OAuth1 {
-    pub fn new(
-        consumer_key: String,
-        consumer_secret: String,
-        callback: Option<String>,
-    ) -> Self {
+    pub fn new(consumer_key: String, consumer_secret: String, callback: Option<String>) -> Self {
         let callback = callback.unwrap_or("http://127.0.0.1".to_string());
 
         Self {
