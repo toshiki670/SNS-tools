@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "sns-tools",
+    "productName": "passwords",
     "version": "0.0.0"
   },
   "tauri": {

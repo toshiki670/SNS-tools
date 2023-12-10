@@ -1,5 +1,5 @@
 [package]
-name = "sns-tools"
+name = "passwords"
 version = "0.0.0"
 description = "SNS Tools"
 authors = ["Toshiki"]
