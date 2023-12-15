@@ -6410,9 +6410,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-standard-with-typescript@npm:^39.1.1":
-  version: 39.1.1
-  resolution: "eslint-config-standard-with-typescript@npm:39.1.1"
+"eslint-config-standard-with-typescript@npm:^42.0.0":
+  version: 42.0.0
+  resolution: "eslint-config-standard-with-typescript@npm:42.0.0"
   dependencies:
     "@typescript-eslint/parser": "npm:^6.4.0"
     eslint-config-standard: "npm:17.1.0"
@@ -6423,7 +6423,7 @@ __metadata:
     eslint-plugin-n: "^15.0.0 || ^16.0.0 "
     eslint-plugin-promise: ^6.0.0
     typescript: "*"
-  checksum: 3e6eea14b23ed01b61d604d5d00b4f0fccf0f6702c1c581543bbc8a3e96dc4559a57c9b374efce7269b0a41d018155854457777263e0d19325a3f16fa4b72fea
+  checksum: acc4f449cbc82382809e36290c621ae729c9cd92c3a8999b4e5520e55e10ba0227b18202b753a290ba01b95582a712d8904f7f171b456e98d4e0004302db7e87
   languageName: node
   linkType: hard
 
@@ -9398,7 +9398,7 @@ __metadata:
     dayjs: "npm:^1.11.10"
     eslint: "npm:^8.54.0"
     eslint-config-prettier: "npm:^9.0.0"
-    eslint-config-standard-with-typescript: "npm:^39.1.1"
+    eslint-config-standard-with-typescript: "npm:^42.0.0"
     eslint-plugin-import: "npm:^2.25.2"
     eslint-plugin-n: "npm:^15.0.0 || ^16.0.0 "
     eslint-plugin-promise: "npm:^6.0.0"
@@ -9410,7 +9410,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.11"
-    react-helmet-async: "npm:^1.3.0"
+    react-helmet-async: "npm:^2.0.3"
     react-i18next: "npm:^13.5.0"
     react-router-dom: "npm:^6.18.0"
     storybook: "npm:^7.5.3"
@@ -9976,26 +9976,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-fast-compare@npm:^3.2.0":
+"react-fast-compare@npm:^3.2.2":
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
   checksum: 0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
   languageName: node
   linkType: hard
 
-"react-helmet-async@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "react-helmet-async@npm:1.3.0"
+"react-helmet-async@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-helmet-async@npm:2.0.3"
   dependencies:
-    "@babel/runtime": "npm:^7.12.5"
     invariant: "npm:^2.2.4"
-    prop-types: "npm:^15.7.2"
-    react-fast-compare: "npm:^3.2.0"
+    react-fast-compare: "npm:^3.2.2"
     shallowequal: "npm:^1.1.0"
   peerDependencies:
     react: ^16.6.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
-  checksum: 8f3e6d26beff61d2ed18f7b41561df3e4d83a7582914c7196aa65158c7f3cce939276547d7a0b8987952d9d44131406df74efba02d1f8fa8a3940b49e6ced70b
+  checksum: 3ac58fac566e3f4951c3853975afd57dbc3af1442a897391a226fb1a54cc757506912d13485e897c61ecefe5d97e673ee91688b11ff20eb769b172c0309514ee
   languageName: node
   linkType: hard
 
