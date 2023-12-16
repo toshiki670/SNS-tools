@@ -13,8 +13,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@mui/material": "^5.15.0",
     "@tauri-apps/api": "^1.5.2",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
