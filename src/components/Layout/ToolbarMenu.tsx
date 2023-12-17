@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { NavLink } from "react-router-dom";
+
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 
@@ -41,7 +43,7 @@ export const ToolbarMenu = (): JSX.Element => {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose}>Lock</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <MenuItem component={NavLink} to={"./settings/generals"} onClick={handleClose}>Settings</MenuItem>
       </Menu>
     </>
   );

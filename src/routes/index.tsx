@@ -6,7 +6,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { MainLayout, type DrawerItem } from "@/components/Layout";
 
 import { Dashboard } from "@/features/misc";
-import { XRoutes } from "@/features/settings";
+import { SettingsRoutes } from "@/features/settings";
 
 const App = (): JSX.Element => {
   const drawerItems = [
@@ -23,12 +23,11 @@ const App = (): JSX.Element => {
 
 export const AppRoutes = (): JSX.Element => {
   const element = useRoutes([
-    { path: "/settings", ...XRoutes },
+    { path: "/settings", ...SettingsRoutes },
     {
       path: "/",
       element: <App />,
       children: [
-        { path: "/x", ...XRoutes },
         { path: "/", ...Dashboard },
         { path: "*", element: <Navigate to="." /> },
       ],
