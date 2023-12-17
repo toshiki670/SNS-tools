@@ -11,8 +11,8 @@ export const Head = ({
 }: HeadProps = {}): JSX.Element => {
   return (
     <Helmet
-      title={title != null ? `${title} | SNS Tools` : undefined}
-      defaultTitle="SNS Tools"
+      title={title != null ? `${title} | Passwords` : undefined}
+      defaultTitle="Passwords"
     >
       <meta name="description" content={description} />
     </Helmet>
