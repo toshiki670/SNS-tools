@@ -17,7 +17,9 @@ export const ContentLayout = ({
     <>
       <Head title={title} />
       <Box>
-        <Typography variant="h4">{title}</Typography>
+        <Typography mb={2} variant="h4">
+          {title}
+        </Typography>
         <Box>{children}</Box>
       </Box>
     </>
