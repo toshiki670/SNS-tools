@@ -1,0 +1,8 @@
+{
+  "components": {
+    "signin": "Signin"
+  },
+  "features": {
+    "HOGE": "a"
+  }
+}
