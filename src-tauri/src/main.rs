@@ -9,7 +9,11 @@ fn main() {
     env_logger::init();
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![command::submit_settings])
+        .invoke_handler(tauri::generate_handler![
+            command::submit_settings,
+            command::validate_system_current_password,
+            command::update_system_password,
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
