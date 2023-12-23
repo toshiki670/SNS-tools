@@ -4,7 +4,7 @@ use tauri::command;
 
 use crate::settings;
 
-fn error_i18n(fn_name: &str, name: &str) -> String {
+fn i18n_path(fn_name: &str, name: &str) -> String {
     format!("tauri.{}.{}", fn_name, name)
 }
 
@@ -15,6 +15,6 @@ pub async fn submit_settings() -> Result<Value, String> {
     if let Ok(_) = settings.submit() {
         Ok(json!({"body": "abc"}))
     } else {
-        Err(error_i18n("submit_settings", "failed"))
+        Err(i18n_path("submit_settings", "failed"))
     }
 }
