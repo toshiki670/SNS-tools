@@ -9985,6 +9985,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.12"
     react-helmet-async: "npm:^2.0.3"
+    react-hook-form: "npm:^7.49.2"
     react-i18next: "npm:^13.5.0"
     react-router-dom: "npm:^6.21.0"
     storybook: "npm:^7.6.5"
@@ -10568,6 +10569,15 @@ __metadata:
     react: ^16.6.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
   checksum: 3ac58fac566e3f4951c3853975afd57dbc3af1442a897391a226fb1a54cc757506912d13485e897c61ecefe5d97e673ee91688b11ff20eb769b172c0309514ee
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.49.2":
+  version: 7.49.2
+  resolution: "react-hook-form@npm:7.49.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 8e2d3209d49a816f08e61a3b1847e9edff5ecb6e5b3cd056780c2331f8bb32aa0b7a2542bece602b415ddd4009023c5d054a27a021dc5014672623d5990853c8
   languageName: node
   linkType: hard
 
