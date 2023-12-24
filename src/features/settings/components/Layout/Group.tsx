@@ -12,8 +12,10 @@ export const Group = ({ title, children }: GroupProps): JSX.Element => {
     <Box
       border={1}
       borderColor="primary.dark"
-      borderRadius={2}
-      p={2}
+      borderRadius={1}
+      pt={3}
+      px={2}
+      pb={2}
       position="relative"
     >
       <Typography

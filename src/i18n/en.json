@@ -2,7 +2,9 @@
   "components": {
     "signin": "Signin"
   },
-  "features": {
-    "HOGE": "a"
+  "tauri": {
+    "submit_settings": {
+      "failed": "failed save settings"
+    }
   }
 }
