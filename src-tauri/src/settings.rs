@@ -1,8 +1,7 @@
-use log::{debug, error, info};
+use log::{debug, error};
 use serde::{Deserialize, Serialize};
 use std::fs::{self, File};
 use std::io::Write;
-use std::path::PathBuf;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct General {
@@ -42,7 +41,7 @@ impl Setting {
             Ok(setting_raw) => {
                 debug!("setting_raw: {:?}", &setting_raw);
                 match toml::from_str::<Self>(&setting_raw) {
-                    Ok(mut setting) => setting,
+                    Ok(setting) => setting,
                     Err(e) => {
                         error!("There is an issue with the format of the configuration file.");
                         error!("{e}");
