@@ -1,4 +1,4 @@
-use log::{debug, error, info};
+use log::{debug, info};
 use serde_json::{json, Value};
 use tauri::command;
 

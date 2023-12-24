@@ -1,8 +1,7 @@
-use log::{debug, error, info};
+use log::{debug, error};
 use serde::{Deserialize, Serialize};
 use std::fs::{self, File};
 use std::io::Write;
-use std::path::PathBuf;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct General {
