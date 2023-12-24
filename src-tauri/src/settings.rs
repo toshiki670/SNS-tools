@@ -41,7 +41,7 @@ impl Setting {
             Ok(setting_raw) => {
                 debug!("setting_raw: {:?}", &setting_raw);
                 match toml::from_str::<Self>(&setting_raw) {
-                    Ok(mut setting) => setting,
+                    Ok(setting) => setting,
                     Err(e) => {
                         error!("There is an issue with the format of the configuration file.");
                         error!("{e}");
