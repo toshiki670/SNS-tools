@@ -1,4 +1,4 @@
-use log::{error, info};
+use log::{debug, error, info};
 use serde_json::{json, Value};
 use tauri::command;
 
@@ -21,12 +21,14 @@ pub async fn submit_settings() -> Result<Value, String> {
 
 #[command]
 pub fn validate_system_current_password(current: &str) -> bool {
-    true
+    debug!("{}", current);
+    debug!("{}", current == "asdfASDF124!@#$");
+    current == "asdfASDF124!@#$"
 }
 
 #[command]
 pub fn update_system_password(current: &str, password: &str, confirm: &str) -> String {
-    if false == validate_system_current_password(current) {
+    if validate_system_current_password(current) == false {
         unreachable!();
     }
 

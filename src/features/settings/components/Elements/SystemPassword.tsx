@@ -1,21 +1,68 @@
-import { useState } from "react";
+// Form reference
+// https://dev.classmethod.jp/articles/mui-v5-rhf-v7/
+// https://github.com/jquense/yup
 
-import {
-  FormControl,
-  TextField,
-  Grid,
-  Button,
-  Typography,
-} from "@mui/material";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { FormControl, TextField, Grid, Button } from "@mui/material";
 
 import { Group } from "../Layout";
 
-// import { formatDate } from '@/utils/format';
-// import { Button } from "@/components/Elements";
-import { submitSettings } from "../../api/submitSettings";
+import {
+  validateSystemCurrentPassword,
+  updateSystemPassword,
+} from "../../api/systemPassword";
 
 export const SystemPassword = (): JSX.Element => {
-  const [data, setData] = useState<string>("");
+  interface SystemPasswordFormInput {
+    current: string;
+    password: string;
+    confirm: string;
+  }
+
+  const passwordValidation = yup
+    .string()
+    .required("required")
+    .min(8, "less")
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
+      "week password"
+    );
+
+  const schema = yup.object({
+    current: yup
+      .string()
+      .concat(passwordValidation)
+      .test("match_current", "not match", async (value, _) => {
+        return await validateSystemCurrentPassword(value);
+      }),
+    password: yup.string().concat(passwordValidation),
+    confirm: yup
+      .string()
+      .concat(passwordValidation)
+      .oneOf([yup.ref("password")], "Passwords must match"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SystemPasswordFormInput>({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<SystemPasswordFormInput> = async (
+    data: SystemPasswordFormInput
+  ) => {
+    const result = await updateSystemPassword(
+      data.current,
+      data.password,
+      data.confirm
+    );
+    console.log(result);
+  };
 
   return (
     <Group title={"System Password"}>
@@ -25,51 +72,44 @@ export const SystemPassword = (): JSX.Element => {
             <TextField
               required
               fullWidth
-              id="outlined-password-input"
               label="Current Password"
               type="password"
               autoComplete="current-password"
+              {...register("current")}
+              error={errors.current !== undefined}
+              helperText={errors.current?.message}
             />
           </Grid>
           <Grid item xs={8}>
             <TextField
               required
               fullWidth
-              id="outlined-password-input"
               label="New Password"
               type="password"
-              autoComplete="current-password"
+              autoComplete="new-password"
+              {...register("password")}
+              error={errors.password !== undefined}
+              helperText={errors.password?.message}
             />
           </Grid>
           <Grid item xs={8}>
             <TextField
               required
               fullWidth
-              id="outlined-password-input"
               label="Confirm Password"
               type="password"
-              autoComplete="current-password"
+              autoComplete="confirm-password"
+              {...register("confirm")}
+              error={errors.confirm !== undefined}
+              helperText={errors.confirm?.message}
             />
           </Grid>
           <Grid item xs={1}>
-            <Button
-              variant="contained"
-              onClick={(): void => {
-                void (async (): Promise<void> => {
-                  try {
-                    const result = await submitSettings();
-                    setData(result.body);
-                  } catch (e) {
-                    // console.error("Error:", e);
-                    setData(e as string);
-                  }
-                })();
-              }}
-            >
+            <Button variant="contained" onClick={handleSubmit(onSubmit)}>
               Update
             </Button>
           </Grid>
-          <Typography>{data}</Typography>
+          {/* <Typography>{data}</Typography> */}
         </Grid>
       </FormControl>
     </Group>
