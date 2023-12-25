@@ -11,8 +11,8 @@ pub struct General {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub enum Language {
-    English,
-    Japanese,
+    EnUS,
+    JaJP,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -74,7 +74,7 @@ impl Setting {
             setting_version: 1,
             general: General {
                 store_path: "../password.json".to_string(),
-                language: Language::English,
+                language: Language::EnUS,
             },
             appearance: Appearance {
                 theme: Theme::Light,
