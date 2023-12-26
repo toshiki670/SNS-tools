@@ -26,7 +26,7 @@ export interface DrawerItem {
 export const DrawerList = ({ items }: DrawerListProps): JSX.Element => {
   return (
     <>
-      <Toolbar component={NavLink} to={"."}>
+      <Toolbar component={NavLink} to={"/"}>
         <Logo />
       </Toolbar>
       <Divider />
