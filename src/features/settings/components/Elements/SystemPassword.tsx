@@ -12,7 +12,7 @@ import { Group } from "../Layout";
 import {
   validateSystemCurrentPassword,
   updateSystemPassword,
-} from "../../api/systemPassword";
+} from "@/tauri/command";
 
 export const SystemPassword = (): JSX.Element => {
   interface SystemPasswordFormInput {
