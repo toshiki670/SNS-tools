@@ -16,6 +16,7 @@ export const Group = ({ title, children }: GroupProps): JSX.Element => {
       pt={3}
       px={2}
       pb={2}
+      mb={3}
       position="relative"
     >
       <Typography
