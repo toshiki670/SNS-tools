@@ -49,7 +49,7 @@ export const SystemPassword = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm<SystemPasswordFormInput>({
-    mode: 'onChange',
+    mode: "onChange",
     resolver: yupResolver(schema),
   });
 
