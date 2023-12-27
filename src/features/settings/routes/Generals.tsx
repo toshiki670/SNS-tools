@@ -11,7 +11,7 @@
 
 // import { Spinner } from '@/components/Elements'
 import { ContentLayout } from "@/components/Layout";
-import { SystemPassword } from "../components/Elements";
+import { SystemPassword, Language } from "../components/Elements";
 
 // import { formatDate } from '@/utils/format';
 // import { Button } from "@/components/Elements";
@@ -24,6 +24,7 @@ export const Generals = (): JSX.Element => {
   return (
     <ContentLayout title={"Generals"}>
       <SystemPassword />
+      <Language />
     </ContentLayout>
   );
 };
