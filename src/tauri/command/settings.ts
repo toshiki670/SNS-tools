@@ -12,13 +12,13 @@ export const submitSettings = async (): Promise<Data> => {
 
 export interface Settings {
   general: {
-    language: string;
-    store_path: string;
+    language?: string;
+    store_path?: string;
   };
-  appearance: {
-    theme: string;
+  appearance?: {
+    theme?: string;
   };
-  setting_version: number;
+  setting_version?: number;
 }
 
 export const getSettings = async (): Promise<Settings> => {
