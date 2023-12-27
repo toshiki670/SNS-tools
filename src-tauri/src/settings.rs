@@ -27,13 +27,13 @@ pub enum Theme {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct Setting {
+pub struct Settings {
     pub setting_version: u8,
     pub general: General,
     pub appearance: Appearance,
 }
 
-impl Setting {
+impl Settings {
     const FILE_PATH: &'static str = "../my_settings.toml";
 
     pub fn new() -> Self {
@@ -45,13 +45,13 @@ impl Setting {
                     Err(e) => {
                         error!("There is an issue with the format of the configuration file.");
                         error!("{e}");
-                        Self::new_setting()
+                        Self::new_settings()
                     }
                 }
             }
             Err(e) => {
                 error!("{e}");
-                Self::new_setting()
+                Self::new_settings()
             }
         }
     }
@@ -68,8 +68,8 @@ impl Setting {
     }
 }
 
-impl Setting {
-    fn new_setting() -> Self {
+impl Settings {
+    fn new_settings() -> Self {
         Self {
             setting_version: 1,
             general: General {
