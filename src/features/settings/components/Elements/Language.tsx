@@ -21,8 +21,8 @@ export const Language = (): JSX.Element => {
   const [language, setLanguage] = useState<string>(i18n.language);
 
   const langageItems = [
-    { value: "EnUS", text: "English" },
-    { value: "JaJP", text: "日本語" },
+    { value: "en-US", text: "English" },
+    { value: "ja-JP", text: "日本語" },
   ] as LanguageItem[];
 
   const handleChange = (event: SelectChangeEvent): void => {

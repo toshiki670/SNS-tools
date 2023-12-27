@@ -3,14 +3,14 @@ import { initReactI18next } from "react-i18next";
 
 import { getSettings } from "@/tauri/command";
 
-import translationEnUS from "./EnUS.json";
-import translationJaJP from "./JaJP.json";
+import translationEnUS from "./en-US.json";
+import translationJaJP from "./ja-JP.json";
 
 const resources = {
-  EnUS: {
+  "en-US": {
     translation: translationEnUS,
   },
-  JaJP: {
+  "ja-JP": {
     translation: translationJaJP,
   },
 };

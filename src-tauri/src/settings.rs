@@ -6,13 +6,7 @@ use std::io::Write;
 #[derive(Debug, Deserialize, Serialize)]
 pub struct General {
     pub store_path: String,
-    pub language: Language,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-pub enum Language {
-    EnUS,
-    JaJP,
+    pub language: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -74,7 +68,7 @@ impl Settings {
             setting_version: 1,
             general: General {
                 store_path: "../password.json".to_string(),
-                language: Language::EnUS,
+                language: "en-US".to_string(),
             },
             appearance: Appearance {
                 theme: Theme::Light,
