@@ -16,7 +16,7 @@ interface LanguageItem {
 }
 
 export const Language = (): JSX.Element => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [language, setLanguage] = useState<string>(i18n.language);
 
@@ -31,7 +31,7 @@ export const Language = (): JSX.Element => {
   };
 
   return (
-    <Group title={"language"}>
+    <Group title={t("words.language")}>
       <FormControl>
         <Grid container spacing={2}>
           <Grid item xs={8}>

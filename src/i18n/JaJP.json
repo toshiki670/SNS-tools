@@ -1,1 +1,13 @@
-{}
+{
+  "words": {
+    "language": "言語"
+  },
+  "components": {
+    "signin": "Signin"
+  },
+  "tauri": {
+    "submit_settings": {
+      "failed": "failed save settings"
+    }
+  }
+}

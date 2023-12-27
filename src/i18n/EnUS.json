@@ -1,4 +1,7 @@
 {
+  "words": {
+    "language": "language"
+  },
   "components": {
     "signin": "Signin"
   },
