@@ -5,13 +5,13 @@ use std::io::Write;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct General {
-    pub store_path: String,
-    pub language: String,
+    pub store_path: Option<String>,
+    pub language: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Appearance {
-    pub theme: Theme,
+    pub theme: Option<Theme>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -22,9 +22,9 @@ pub enum Theme {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Settings {
-    pub setting_version: u8,
-    pub general: General,
-    pub appearance: Appearance,
+    pub setting_version: Option<u8>,
+    pub general: Option<General>,
+    pub appearance: Option<Appearance>,
 }
 
 impl Settings {
@@ -65,14 +65,14 @@ impl Settings {
 impl Settings {
     fn new_settings() -> Self {
         Self {
-            setting_version: 1,
-            general: General {
-                store_path: "../password.json".to_string(),
-                language: "en-US".to_string(),
-            },
-            appearance: Appearance {
-                theme: Theme::Light,
-            },
+            setting_version: Some(1),
+            general: Some(General {
+                store_path: Some("../password.json".to_string()),
+                language: Some("en-US".to_string()),
+            }),
+            appearance: Some(Appearance {
+                theme: Some(Theme::Light),
+            }),
         }
     }
 }
