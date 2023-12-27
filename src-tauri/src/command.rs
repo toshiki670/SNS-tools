@@ -10,7 +10,7 @@ fn i18n_path(fn_name: &str, name: &str) -> String {
 
 #[command]
 pub async fn submit_settings() -> Result<Value, String> {
-    let settings = settings::Setting::new();
+    let settings = settings::Settings::new();
 
     if let Ok(_) = settings.submit() {
         Ok(json!({"body": "abc"}))
