@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 // Form reference
 // https://dev.classmethod.jp/articles/mui-v5-rhf-v7/
 // https://github.com/jquense/yup
@@ -14,13 +15,13 @@ import {
   updateSystemPassword,
 } from "@/tauri/command";
 
-export const SystemPassword = (): JSX.Element => {
-  interface SystemPasswordFormInput {
-    current: string;
-    password: string;
-    confirm: string;
-  }
+interface SystemPasswordFormInput {
+  current: string;
+  password: string;
+  confirm: string;
+}
 
+export const SystemPassword = (): JSX.Element => {
   const passwordValidation = yup
     .string()
     .required("required")
