@@ -20,6 +20,12 @@ pub async fn submit_settings() -> Result<Value, String> {
 }
 
 #[command]
+pub fn get_settings() -> settings::Settings {
+    let settings = settings::Settings::new();
+    settings
+}
+
+#[command]
 pub fn validate_system_current_password(current: &str) -> bool {
     debug!("{}", current);
     debug!("{}", current == "asdfASDF124!@#$");
