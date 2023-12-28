@@ -46,7 +46,7 @@ export const ToolbarMenu = (): JSX.Element => {
         <MenuItem onClick={handleClose}>{t("features.lock")}</MenuItem>
         <MenuItem
           component={NavLink}
-          to={"./settings/generals"}
+          to={"/settings/generals"}
           onClick={handleClose}
         >
           {t("features.settings")}
