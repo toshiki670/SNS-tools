@@ -1,0 +1,16 @@
+{
+  "generals": "Generals",
+  "appearance": "Appearance",
+  "components": {
+    "Language": {
+      "title": "Language"
+    },
+    "SystemPassword": {
+      "title": "System Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Update"
+    }
+  }
+}

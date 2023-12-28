@@ -7,6 +7,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormControl, TextField, Grid, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 import { Group } from "../Layout";
 
@@ -22,6 +23,8 @@ interface SystemPasswordFormInput {
 }
 
 export const SystemPassword = (): JSX.Element => {
+  const { t } = useTranslation("settings", { keyPrefix: 'components.SystemPassword' });
+
   const passwordValidation = yup
     .string()
     .required("required")
@@ -66,14 +69,14 @@ export const SystemPassword = (): JSX.Element => {
   };
 
   return (
-    <Group title={"System Password"}>
+    <Group title={t("title")}>
       <FormControl>
         <Grid container spacing={2}>
           <Grid item xs={8}>
             <TextField
               required
               fullWidth
-              label="Current Password"
+              label={t("currentPassword")}
               type="password"
               autoComplete="current-password"
               {...register("current")}
@@ -85,7 +88,7 @@ export const SystemPassword = (): JSX.Element => {
             <TextField
               required
               fullWidth
-              label="New Password"
+              label={t("newPassword")}
               type="password"
               autoComplete="new-password"
               {...register("password")}
@@ -97,7 +100,7 @@ export const SystemPassword = (): JSX.Element => {
             <TextField
               required
               fullWidth
-              label="Confirm Password"
+              label={t("confirmPassword")}
               type="password"
               autoComplete="confirm-password"
               {...register("confirm")}
@@ -107,7 +110,7 @@ export const SystemPassword = (): JSX.Element => {
           </Grid>
           <Grid item xs={1}>
             <Button variant="contained" onClick={handleSubmit(onSubmit)}>
-              Update
+              {t("submit")}
             </Button>
           </Grid>
           {/* <Typography>{data}</Typography> */}
