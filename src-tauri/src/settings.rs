@@ -27,6 +27,7 @@ pub struct Settings {
     pub appearance: Option<Appearance>,
 }
 
+// For public
 impl Settings {
     const FILE_PATH: &'static str = "../my_settings.toml";
 
@@ -60,8 +61,33 @@ impl Settings {
 
         Ok(())
     }
+
+    // changes で Someになっている値だけを更新
+    pub fn update(&mut self, changes: Self) {
+        if let Some(setting_version) = changes.setting_version {
+            self.setting_version = Some(setting_version);
+        }
+
+        if let Some(general) = changes.general {
+            if let Some(store_path) = general.store_path {
+                self.general
+                    .as_mut()
+                    .map(|g| g.store_path = Some(store_path));
+            }
+            if let Some(language) = general.language {
+                self.general.as_mut().map(|g| g.language = Some(language));
+            }
+        }
+
+        if let Some(appearance) = changes.appearance {
+            if let Some(theme) = appearance.theme {
+                self.appearance.as_mut().map(|a| a.theme = Some(theme));
+            }
+        }
+    }
 }
 
+// For Private
 impl Settings {
     fn new_settings() -> Self {
         Self {

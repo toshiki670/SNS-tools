@@ -26,6 +26,20 @@ pub fn get_settings() -> settings::Settings {
 }
 
 #[command]
+pub async fn update_settings(settings: settings::Settings) -> Result<String, String> {
+    let mut current = settings::Settings::new();
+    current.update(settings);
+
+    match current.submit() {
+        Ok(_) => Ok(i18n_path("update_settings", "success")),
+        Err(e) => {
+            error!("{}", e);
+            Err(i18n_path("update_settings", "failed"))
+        }
+    }
+}
+
+#[command]
 pub fn validate_system_current_password(current: &str) -> bool {
     debug!("{}", current);
     debug!("{}", current == "asdfASDF124!@#$");
