@@ -1,5 +1,9 @@
 {
   "appName": "パスワード管理",
+  "features": {
+    "lock": "ロック",
+    "settings": "設定"
+  },
   "tauri": {
     "submit_settings": {
       "failed": "failed save settings"
