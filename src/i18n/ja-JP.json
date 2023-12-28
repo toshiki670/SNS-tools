@@ -1,10 +1,5 @@
 {
-  "words": {
-    "language": "言語"
-  },
-  "components": {
-    "signin": "Signin"
-  },
+  "appName": "パスワード管理",
   "tauri": {
     "submit_settings": {
       "failed": "failed save settings"
