@@ -8,6 +8,8 @@ import {
   type SelectChangeEvent,
 } from "@mui/material";
 
+import { updateSettings } from "@/tauri/command";
+
 import { Group } from "../Layout";
 
 interface LanguageItem {
@@ -26,8 +28,10 @@ export const Language = (): JSX.Element => {
   ] as LanguageItem[];
 
   const handleChange = (event: SelectChangeEvent): void => {
-    setLanguage(event.target.value);
-    void i18n.changeLanguage(event.target.value);
+    const changedValue = event.target.value;
+    setLanguage(changedValue);
+    void i18n.changeLanguage(changedValue);
+    void updateSettings({ general: { language: changedValue } });
   };
 
   return (

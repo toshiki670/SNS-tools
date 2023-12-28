@@ -24,3 +24,7 @@ export interface Settings {
 export const getSettings = async (): Promise<Settings> => {
   return await invoke("get_settings");
 };
+
+export const updateSettings = async (settings: Settings): Promise<string> => {
+  return await invoke("update_settings", { settings });
+};
