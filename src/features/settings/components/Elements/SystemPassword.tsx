@@ -23,7 +23,10 @@ interface SystemPasswordFormInput {
 }
 
 export const SystemPassword = (): JSX.Element => {
-  const { t } = useTranslation("settings", { keyPrefix: 'components.SystemPassword' });
+  const { t } = useTranslation("settings", {
+    keyPrefix: "components.SystemPassword",
+  });
+
 
   const passwordValidation = yup
     .string()
