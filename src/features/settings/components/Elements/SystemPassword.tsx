@@ -40,13 +40,15 @@ export const SystemPassword = (): JSX.Element => {
   const schema = yup.object({
     current: yup
       .string()
+      .label(t("currentPassword"))
       .concat(passwordValidation)
       .test("match_current", "not match", async (value, _) => {
         return await validateSystemCurrentPassword(value);
       }),
-    password: yup.string().concat(passwordValidation),
+    password: yup.string().label(t("newPassword")).concat(passwordValidation),
     confirm: yup
       .string()
+      .label(t("confirmPassword"))
       .concat(passwordValidation)
       .oneOf([yup.ref("password")], "Passwords must match"),
   });
