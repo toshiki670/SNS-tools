@@ -17,9 +17,9 @@ import {
 } from "@/tauri/command";
 
 interface SystemPasswordFormInput {
-  current: string;
-  password: string;
-  confirm: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 }
 
 export const SystemPassword = (): JSX.Element => {
@@ -37,24 +37,24 @@ export const SystemPassword = (): JSX.Element => {
 
   const schema = z
     .object({
-      current: passwordValidation.refine(validateSystemCurrentPassword, {
+      currentPassword: passwordValidation.refine(validateSystemCurrentPassword, {
         message: t("error.wrongCurrentPassword"),
       }),
-      password: passwordValidation,
-      confirm: passwordValidation,
+      newPassword: passwordValidation,
+      confirmPassword: passwordValidation,
     })
-    .superRefine(({ current, password, confirm }, ctx) => {
+    .superRefine(({ currentPassword, newPassword, confirmPassword }, ctx) => {
       // Correlation Validation
-      if (password !== confirm) {
+      if (newPassword !== confirmPassword) {
         ctx.addIssue({
-          path: ["confirm"],
+          path: ["confirmPassword"],
           code: "custom",
           message: t("error.notSame", { label: t("newPassword")}),
         });
       }
-      if (current === password) {
+      if (currentPassword === newPassword) {
         ctx.addIssue({
-          path: ["password"],
+          path: ["newPassword"],
           code: "custom",
           message: t("error.same", { label: t("currentPassword")}),
         });
@@ -74,9 +74,9 @@ export const SystemPassword = (): JSX.Element => {
     data: SystemPasswordFormInput
   ) => {
     const result = await updateSystemPassword(
-      data.current,
-      data.password,
-      data.confirm
+      data.currentPassword,
+      data.newPassword,
+      data.confirmPassword
     );
     console.log(result);
   };
@@ -91,10 +91,9 @@ export const SystemPassword = (): JSX.Element => {
               fullWidth
               label={t("currentPassword")}
               type="password"
-              autoComplete="current-password"
-              {...register("current")}
-              error={errors.current !== undefined}
-              helperText={errors.current?.message}
+              {...register("currentPassword")}
+              error={errors.currentPassword !== undefined}
+              helperText={errors.currentPassword?.message}
             />
           </Grid>
           <Grid item xs={8}>
@@ -103,10 +102,9 @@ export const SystemPassword = (): JSX.Element => {
               fullWidth
               label={t("newPassword")}
               type="password"
-              autoComplete="new-password"
-              {...register("password")}
-              error={errors.password !== undefined}
-              helperText={errors.password?.message}
+              {...register("newPassword")}
+              error={errors.newPassword !== undefined}
+              helperText={errors.newPassword?.message}
             />
           </Grid>
           <Grid item xs={8}>
@@ -115,10 +113,9 @@ export const SystemPassword = (): JSX.Element => {
               fullWidth
               label={t("confirmPassword")}
               type="password"
-              autoComplete="confirm-password"
-              {...register("confirm")}
-              error={errors.confirm !== undefined}
-              helperText={errors.confirm?.message}
+              {...register("confirmPassword")}
+              error={errors.confirmPassword !== undefined}
+              helperText={errors.confirmPassword?.message}
             />
           </Grid>
           <Grid item xs={1}>
