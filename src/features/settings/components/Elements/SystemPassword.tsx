@@ -4,8 +4,9 @@
 // https://github.com/jquense/yup
 
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import z from "@/configs/zod";
+
 import { FormControl, TextField, Grid, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
@@ -27,31 +28,39 @@ export const SystemPassword = (): JSX.Element => {
     keyPrefix: "components.SystemPassword",
   });
 
-
-  const passwordValidation = yup
+  const passwordValidation = z
     .string()
-    .required("required")
-    .min(8, "less")
-    .matches(
+    .min(8)
+    .regex(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
-      "week password"
+      t("error.includeLetters")
     );
 
-  const schema = yup.object({
-    current: yup
-      .string()
-      .label(t("currentPassword"))
-      .concat(passwordValidation)
-      .test("match_current", "not match", async (value, _) => {
-        return await validateSystemCurrentPassword(value);
+  const schema = z
+    .object({
+      current: passwordValidation.refine(validateSystemCurrentPassword, {
+        message: t("error.wrongCurrentPassword"),
       }),
-    password: yup.string().label(t("newPassword")).concat(passwordValidation),
-    confirm: yup
-      .string()
-      .label(t("confirmPassword"))
-      .concat(passwordValidation)
-      .oneOf([yup.ref("password")], "Passwords must match"),
-  });
+      password: passwordValidation,
+      confirm: passwordValidation,
+    })
+    .superRefine(({ current, password, confirm }, ctx) => {
+      // Correlation Validation
+      if (password !== confirm) {
+        ctx.addIssue({
+          path: ["confirm"],
+          code: "custom",
+          message: t("error.notMatch"),
+        });
+      }
+      if (current === password) {
+        ctx.addIssue({
+          path: ["password"],
+          code: "custom",
+          message: t("error.same"),
+        });
+      }
+    });
 
   const {
     register,
@@ -59,7 +68,7 @@ export const SystemPassword = (): JSX.Element => {
     formState: { errors },
   } = useForm<SystemPasswordFormInput>({
     mode: "onChange",
-    resolver: yupResolver(schema),
+    resolver: zodResolver(schema),
   });
 
   const onSubmit: SubmitHandler<SystemPasswordFormInput> = async (
