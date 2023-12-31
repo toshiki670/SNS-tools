@@ -49,14 +49,14 @@ export const SystemPassword = (): JSX.Element => {
         ctx.addIssue({
           path: ["confirmPassword"],
           code: "custom",
-          message: t("error.notSame", { label: t("newPassword")}),
+          message: t("error.notSame", { label: t("newPassword") }),
         });
       }
       if (currentPassword === newPassword) {
         ctx.addIssue({
           path: ["newPassword"],
           code: "custom",
-          message: t("error.same", { label: t("currentPassword")}),
+          message: t("error.same", { label: t("currentPassword") }),
         });
       }
     });
