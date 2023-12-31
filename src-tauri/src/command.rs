@@ -40,21 +40,21 @@ pub async fn update_settings(settings: settings::Settings) -> Result<String, Str
 }
 
 #[command]
-pub fn validate_system_current_password(current: &str) -> bool {
-    debug!("{}", current);
-    debug!("{}", current == "asdfASDF124!@#$");
-    current == "asdfASDF124!@#$"
+pub fn validate_system_current_password(current_password: &str) -> bool {
+    debug!("{}", current_password);
+    debug!("{}", current_password == "asdfASDF124!@#$");
+    current_password == "asdfASDF124!@#$"
 }
 
 #[command]
-pub fn update_system_password(current: &str, password: &str, confirm: &str) -> String {
-    if validate_system_current_password(current) == false {
+pub fn update_system_password(current_password: &str, new_password: &str, confirm_password: &str) -> String {
+    if validate_system_current_password(current_password) == false {
         unreachable!();
     }
 
-    info!("{}", current);
-    info!("{}", password);
-    info!("{}", confirm);
+    info!("{}", current_password);
+    info!("{}", new_password);
+    info!("{}", confirm_password);
 
     i18n_path("update_system_password", "success")
 }

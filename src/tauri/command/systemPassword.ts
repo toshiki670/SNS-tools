@@ -1,13 +1,13 @@
 import { invoke } from "@tauri-apps/api/tauri";
 
-export const validateSystemCurrentPassword = async (current: string): Promise<boolean> => {
-  return await invoke("validate_system_current_password", { current });;
+export const validateSystemCurrentPassword = async (currentPassword: string): Promise<boolean> => {
+  return await invoke("validate_system_current_password", { currentPassword });;
 };
 
 export const updateSystemPassword = async (
-  current: string,
-  password: string,
-  confirm: string
+  currentPassword: string,
+  newPassword: string,
+  confirmPassword: string
 ): Promise<string> => {
-  return await invoke("update_system_password", { current, password, confirm });
+  return await invoke("update_system_password", { currentPassword, newPassword, confirmPassword });
 };
