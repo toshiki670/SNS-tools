@@ -1,40 +1,55 @@
-use log::{debug, info};
+use log::{debug, error, info};
 use serde_json::{json, Value};
 use tauri::command;
 
 use crate::settings;
 
-fn i18n_path(fn_name: &str, name: &str) -> String {
-    format!("tauri.{}.{}", fn_name, name)
-}
-
 #[command]
 pub async fn submit_settings() -> Result<Value, String> {
-    let settings = settings::Setting::new();
+    let settings = settings::Settings::new();
 
     if let Ok(_) = settings.submit() {
         Ok(json!({"body": "abc"}))
     } else {
-        Err(i18n_path("submit_settings", "failed"))
+        Err("error".to_string())
     }
 }
 
 #[command]
-pub fn validate_system_current_password(current: &str) -> bool {
-    debug!("{}", current);
-    debug!("{}", current == "asdfASDF124!@#$");
-    current == "asdfASDF124!@#$"
+pub fn get_settings() -> settings::Settings {
+    let settings = settings::Settings::new();
+    settings
 }
 
 #[command]
-pub fn update_system_password(current: &str, password: &str, confirm: &str) -> String {
-    if validate_system_current_password(current) == false {
+pub async fn update_settings(settings: settings::Settings) -> bool {
+    let mut current = settings::Settings::new();
+    current.update(settings);
+
+    match current.submit() {
+        Ok(_) => true,
+        Err(e) => {
+            error!("{}", e);
+            false
+        }
+    }
+}
+
+#[command]
+pub fn validate_system_current_password(current_password: &str) -> bool {
+    debug!("{}", current_password);
+    true
+}
+
+#[command]
+pub fn update_system_password(current_password: &str, new_password: &str, confirm_password: &str) -> bool {
+    if validate_system_current_password(current_password) == false {
         unreachable!();
     }
 
-    info!("{}", current);
-    info!("{}", password);
-    info!("{}", confirm);
+    info!("{}", current_password);
+    info!("{}", new_password);
+    info!("{}", confirm_password);
 
-    i18n_path("update_system_password", "success")
+    true
 }

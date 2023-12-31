@@ -1,0 +1,24 @@
+{
+  "generals": "Generals",
+  "appearance": "Appearance",
+  "components": {
+    "Language": {
+      "title": "Language"
+    },
+    "SystemPassword": {
+      "title": "System Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Update",
+      "success": "Saved",
+      "Failed": "Could not save",
+      "error": {
+        "includeLetters": "Include the following numbers: lowercase, uppercase, numbers and symbols",
+        "wrongCurrentPassword": "Different from the saved password",
+        "notSame": "Doesn't match {{label}}",
+        "same": "Same as {{label}}"
+      }
+    }
+  }
+}

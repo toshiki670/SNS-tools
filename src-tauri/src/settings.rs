@@ -5,19 +5,13 @@ use std::io::Write;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct General {
-    pub store_path: String,
-    pub language: Language,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-pub enum Language {
-    English,
-    Japanese,
+    pub store_path: Option<String>,
+    pub language: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Appearance {
-    pub theme: Theme,
+    pub theme: Option<Theme>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -27,13 +21,14 @@ pub enum Theme {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct Setting {
-    pub setting_version: u8,
-    pub general: General,
-    pub appearance: Appearance,
+pub struct Settings {
+    pub setting_version: Option<u8>,
+    pub general: Option<General>,
+    pub appearance: Option<Appearance>,
 }
 
-impl Setting {
+// For public
+impl Settings {
     const FILE_PATH: &'static str = "../my_settings.toml";
 
     pub fn new() -> Self {
@@ -45,13 +40,13 @@ impl Setting {
                     Err(e) => {
                         error!("There is an issue with the format of the configuration file.");
                         error!("{e}");
-                        Self::new_setting()
+                        Self::new_settings()
                     }
                 }
             }
             Err(e) => {
                 error!("{e}");
-                Self::new_setting()
+                Self::new_settings()
             }
         }
     }
@@ -66,19 +61,44 @@ impl Setting {
 
         Ok(())
     }
+
+    // changes で Someになっている値だけを更新
+    pub fn update(&mut self, changes: Self) {
+        if let Some(setting_version) = changes.setting_version {
+            self.setting_version = Some(setting_version);
+        }
+
+        if let Some(general) = changes.general {
+            if let Some(store_path) = general.store_path {
+                self.general
+                    .as_mut()
+                    .map(|g| g.store_path = Some(store_path));
+            }
+            if let Some(language) = general.language {
+                self.general.as_mut().map(|g| g.language = Some(language));
+            }
+        }
+
+        if let Some(appearance) = changes.appearance {
+            if let Some(theme) = appearance.theme {
+                self.appearance.as_mut().map(|a| a.theme = Some(theme));
+            }
+        }
+    }
 }
 
-impl Setting {
-    fn new_setting() -> Self {
+// For Private
+impl Settings {
+    fn new_settings() -> Self {
         Self {
-            setting_version: 1,
-            general: General {
-                store_path: "../password.json".to_string(),
-                language: Language::English,
-            },
-            appearance: Appearance {
-                theme: Theme::Light,
-            },
+            setting_version: Some(1),
+            general: Some(General {
+                store_path: Some("../password.json".to_string()),
+                language: Some("en-US".to_string()),
+            }),
+            appearance: Some(Appearance {
+                theme: Some(Theme::Light),
+            }),
         }
     }
 }

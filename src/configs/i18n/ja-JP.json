@@ -1,0 +1,7 @@
+{
+  "appName": "パスワード管理",
+  "features": {
+    "lock": "ロック",
+    "settings": "設定"
+  }
+}

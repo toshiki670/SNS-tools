@@ -1,15 +1,17 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import translation_en from "./en.json";
-import translation_ja from "./ja.json";
+import { getSettings } from "@/tauri/command";
+
+import translationEnUS from "./en-US.json";
+import translationJaJP from "./ja-JP.json";
 
 const resources = {
-  en: {
-    translation: translation_en,
+  "en-US": {
+    translation: translationEnUS,
   },
-  ja: {
-    translation: translation_ja,
+  "ja-JP": {
+    translation: translationJaJP,
   },
 };
 
@@ -17,7 +19,7 @@ void i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: "en", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
+    lng: (await getSettings()).general.language, // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
     // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
     // if you're using a language detector, do not define the lng option
 

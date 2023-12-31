@@ -1,0 +1,24 @@
+{
+  "generals": "一般",
+  "appearance": "外観",
+  "components": {
+    "Language": {
+      "title": "言語"
+    },
+    "SystemPassword": {
+      "title": "システムパスワード",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワードの確認",
+      "submit": "更新",
+      "success": "保存しました。",
+      "Failed": "保存できませんでした。",
+      "error": {
+        "includeLetters": "次の文字を含めてください：小文字、大文字、数字 と 記号",
+        "wrongCurrentPassword": "保存したパスワードと異なります。",
+        "notSame": "{{label}}と異なります。",
+        "same": "{{label}}と同じです。"
+      }
+    }
+  }
+}

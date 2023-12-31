@@ -1,15 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 
 import { MainLayout, type DrawerItem } from "@/components/Layout";
+
+import "../i18n/configs";
 import { Generals } from "./Generals";
 
 const Settings = (): JSX.Element => {
+  const { t } = useTranslation("settings");
+
   const drawerItems = [
-    { name: "Generals", to: "./generals", icon: SettingsIcon },
-    { name: "Appearance", to: "./appearance", icon: ColorLensIcon },
+    { name: t("generals"), to: "./generals", icon: SettingsIcon },
+    { name: t("appearance"), to: "./appearance", icon: ColorLensIcon },
   ] as DrawerItem[];
 
   return (
