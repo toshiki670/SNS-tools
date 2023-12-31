@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 // Form reference
 // https://dev.classmethod.jp/articles/mui-v5-rhf-v7/
-// https://github.com/jquense/yup
 
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
