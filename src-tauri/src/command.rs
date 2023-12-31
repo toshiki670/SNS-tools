@@ -4,10 +4,6 @@ use tauri::command;
 
 use crate::settings;
 
-fn i18n_path(fn_name: &str, name: &str) -> String {
-    format!("tauri.{}.{}", fn_name, name)
-}
-
 #[command]
 pub async fn submit_settings() -> Result<Value, String> {
     let settings = settings::Settings::new();
@@ -15,7 +11,7 @@ pub async fn submit_settings() -> Result<Value, String> {
     if let Ok(_) = settings.submit() {
         Ok(json!({"body": "abc"}))
     } else {
-        Err(i18n_path("submit_settings", "failed"))
+        Err("error".to_string())
     }
 }
 
@@ -26,15 +22,15 @@ pub fn get_settings() -> settings::Settings {
 }
 
 #[command]
-pub async fn update_settings(settings: settings::Settings) -> Result<String, String> {
+pub async fn update_settings(settings: settings::Settings) -> bool {
     let mut current = settings::Settings::new();
     current.update(settings);
 
     match current.submit() {
-        Ok(_) => Ok(i18n_path("update_settings", "success")),
+        Ok(_) => true,
         Err(e) => {
             error!("{}", e);
-            Err(i18n_path("update_settings", "failed"))
+            false
         }
     }
 }
@@ -42,12 +38,11 @@ pub async fn update_settings(settings: settings::Settings) -> Result<String, Str
 #[command]
 pub fn validate_system_current_password(current_password: &str) -> bool {
     debug!("{}", current_password);
-    debug!("{}", current_password == "asdfASDF124!@#$");
-    current_password == "asdfASDF124!@#$"
+    true
 }
 
 #[command]
-pub fn update_system_password(current_password: &str, new_password: &str, confirm_password: &str) -> String {
+pub fn update_system_password(current_password: &str, new_password: &str, confirm_password: &str) -> bool {
     if validate_system_current_password(current_password) == false {
         unreachable!();
     }
@@ -56,5 +51,5 @@ pub fn update_system_password(current_password: &str, new_password: &str, confir
     info!("{}", new_password);
     info!("{}", confirm_password);
 
-    i18n_path("update_system_password", "success")
+    true
 }

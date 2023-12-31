@@ -3,10 +3,5 @@
   "features": {
     "lock": "Lock",
     "settings": "Settings"
-  },
-  "tauri": {
-    "submit_settings": {
-      "failed": "failed save settings"
-    }
   }
 }

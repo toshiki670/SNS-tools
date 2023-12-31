@@ -25,6 +25,6 @@ export const getSettings = async (): Promise<Settings> => {
   return await invoke("get_settings");
 };
 
-export const updateSettings = async (settings: Settings): Promise<string> => {
+export const updateSettings = async (settings: Settings): Promise<boolean> => {
   return await invoke("update_settings", { settings });
 };
