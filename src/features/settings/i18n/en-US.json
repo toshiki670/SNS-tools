@@ -14,8 +14,8 @@
       "error": {
         "includeLetters": "Include the following numbers: lowercase, uppercase, numbers and symbols",
         "wrongCurrentPassword": "Different from the saved password",
-        "notMatch": "Doesn't match new password",
-        "same": "Same as current password"
+        "notSame": "Doesn't match {{label}}",
+        "same": "Same as {{label}}"
       }
     }
   }

@@ -14,8 +14,8 @@
       "error": {
         "includeLetters": "次の文字を含めてください：小文字、大文字、数字 と 記号",
         "wrongCurrentPassword": "保存したパスワードと異なります。",
-        "notMatch": "新しいパスワードと異なります。",
-        "same": "現在のパスワードと同じです。"
+        "notSame": "{{label}}と異なります。",
+        "same": "{{label}}と同じです。"
       }
     }
   }
