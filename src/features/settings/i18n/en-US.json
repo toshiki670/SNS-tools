@@ -10,7 +10,14 @@
       "currentPassword": "Current Password",
       "newPassword": "New Password",
       "confirmPassword": "Confirm Password",
-      "submit": "Update"
+      "submit": "Update",
+      "error": {
+        "includeLetters": "Include the following numbers: lowercase, uppercase, numbers and symbols",
+        "wrongCurrentPassword": "Different from the saved password",
+        "notMatch": "Doesn't match new password",
+        "same": "Same as current password"
+      }
     }
   }
+
 }
