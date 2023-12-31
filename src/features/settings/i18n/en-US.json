@@ -11,6 +11,8 @@
       "newPassword": "New Password",
       "confirmPassword": "Confirm Password",
       "submit": "Update",
+      "success": "Saved",
+      "Failed": "Could not save",
       "error": {
         "includeLetters": "Include the following numbers: lowercase, uppercase, numbers and symbols",
         "wrongCurrentPassword": "Different from the saved password",

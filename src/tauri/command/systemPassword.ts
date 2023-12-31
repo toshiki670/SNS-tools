@@ -8,6 +8,6 @@ export const updateSystemPassword = async (
   currentPassword: string,
   newPassword: string,
   confirmPassword: string
-): Promise<string> => {
+): Promise<boolean> => {
   return await invoke("update_system_password", { currentPassword, newPassword, confirmPassword });
 };

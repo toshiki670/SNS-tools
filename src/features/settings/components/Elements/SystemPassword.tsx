@@ -70,6 +70,8 @@ export const SystemPassword = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
+  const [submitResult, setSubmitResult] = useState<string>("");
+
   const onSubmit: SubmitHandler<SystemPasswordFormInput> = async (
     data: SystemPasswordFormInput
   ) => {
@@ -78,7 +80,8 @@ export const SystemPassword = (): JSX.Element => {
       data.newPassword,
       data.confirmPassword
     );
-    console.log(result);
+    const message = result ? t("success"): t("Failed");
+    setSubmitResult(message);
   };
 
   return (
