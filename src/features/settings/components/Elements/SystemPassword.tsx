@@ -2,11 +2,12 @@
 // Form reference
 // https://dev.classmethod.jp/articles/mui-v5-rhf-v7/
 
+import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "@/configs/zod";
 
-import { FormControl, TextField, Grid, Button } from "@mui/material";
+import { FormControl, TextField, Grid, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import { Group } from "../Layout";
@@ -37,9 +38,12 @@ export const SystemPassword = (): JSX.Element => {
 
   const schema = z
     .object({
-      currentPassword: passwordValidation.refine(validateSystemCurrentPassword, {
-        message: t("error.wrongCurrentPassword"),
-      }),
+      currentPassword: passwordValidation.refine(
+        validateSystemCurrentPassword,
+        {
+          message: t("error.wrongCurrentPassword"),
+        }
+      ),
       newPassword: passwordValidation,
       confirmPassword: passwordValidation,
     })
@@ -126,7 +130,7 @@ export const SystemPassword = (): JSX.Element => {
               {t("submit")}
             </Button>
           </Grid>
-          {/* <Typography>{data}</Typography> */}
+          <Typography>{submitResult}</Typography>
         </Grid>
       </FormControl>
     </Group>
