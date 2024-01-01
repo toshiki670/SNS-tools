@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router";
 
 import logo from "@/assets/react.svg";
-import { Button } from "@/components/Elements";
+import { Button } from "@mui/material";
+
 import { Head } from "@/components/Head";
 
 export const Landing = (): JSX.Element => {
@@ -52,7 +53,6 @@ export const Landing = (): JSX.Element => {
                 rel="noreferrer"
               >
                 <Button
-                  variant="inverse"
                   startIcon={
                     <svg
                       fill="currentColor"
