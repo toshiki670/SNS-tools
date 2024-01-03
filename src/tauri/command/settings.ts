@@ -11,7 +11,7 @@ export const submitSettings = async (): Promise<Data> => {
 // [Log] {appearance: {theme: "Light"}, general: {language: "EnUS", store_path: "../password.json"}, setting_version: 1} (configs.ts, line 6)
 
 export interface Settings {
-  general: {
+  general?: {
     language?: string;
     store_path?: string;
   };
