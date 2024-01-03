@@ -19,6 +19,11 @@
         "notSame": "Doesn't match {{label}}",
         "same": "Same as {{label}}"
       }
+    },
+    "Theme": {
+      "title": "Color Theme",
+      "light": "Light",
+      "dark": "Dark"
     }
   }
 }

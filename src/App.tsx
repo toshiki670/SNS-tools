@@ -1,10 +1,10 @@
-import { AppProvider } from "@/providers/app";
+import { Providers } from "@/providers";
 import { AppRoutes } from "@/routes";
 
 export const App = (): JSX.Element => {
   return (
-    <AppProvider>
+    <Providers>
       <AppRoutes />
-    </AppProvider>
+    </Providers>
   );
 };

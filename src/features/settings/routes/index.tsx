@@ -7,6 +7,7 @@ import { MainLayout, type DrawerItem } from "@/components/Layout";
 
 import "../i18n/configs";
 import { Generals } from "./Generals";
+import { Appearance } from "./Appearance";
 
 const Settings = (): JSX.Element => {
   const { t } = useTranslation("settings");
@@ -27,7 +28,7 @@ export const SettingsRoutes = {
   element: <Settings />,
   children: [
     { path: "generals", element: <Generals /> },
-    { path: "appearance", element: <Navigate to="." /> },
+    { path: "appearance", element: <Appearance /> },
     { path: "*", element: <Navigate to="." /> },
   ],
 };
