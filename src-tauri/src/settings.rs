@@ -11,13 +11,7 @@ pub struct General {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Appearance {
-    pub theme: Option<Theme>,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-pub enum Theme {
-    Light,
-    Dark,
+    pub theme: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -97,7 +91,7 @@ impl Settings {
                 language: Some("en-US".to_string()),
             }),
             appearance: Some(Appearance {
-                theme: Some(Theme::Light),
+                theme: Some("light".to_string()),
             }),
         }
     }
