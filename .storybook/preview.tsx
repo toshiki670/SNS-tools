@@ -1,7 +1,7 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
 
-import { AppProvider } from "../src/providers/app";
+import { Providers } from "../src/providers";
 import "../src/styles.css";
 
 const preview: Preview = {
@@ -16,9 +16,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <AppProvider>
+      <Providers>
         <Story />
-      </AppProvider>
+      </Providers>
     ),
   ],
 };
