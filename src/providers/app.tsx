@@ -1,4 +1,3 @@
-import type React from "react";
 import { useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
