@@ -21,18 +21,18 @@ export const CustomThemeProvider = ({
     },
   });
 
-  // useEffect(() => {
-  //   void (async () => {
-  //     try {
-  //       const theme = (await getSettings()).appearance?.theme;
-  //       if (theme !== undefined) {
-  //         setMode(theme);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    void (async () => {
+      try {
+        const theme = (await getSettings()).appearance?.theme;
+        if (theme !== undefined) {
+          setMode(theme);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   return (
     <PaletteModeCtx.Provider value={{ mode, setMode }}>
