@@ -3,11 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 
 import { CustomThemeProvider } from "./CustomThemeProvider";
 
-interface AppProviderProps {
+interface ProvidersProps {
   children: React.ReactNode;
 }
 
-export const AppProvider = ({ children }: AppProviderProps): JSX.Element => {
+export const Providers = ({ children }: ProvidersProps): JSX.Element => {
   return (
     <CustomThemeProvider>
       <HelmetProvider>
