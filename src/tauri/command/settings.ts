@@ -1,3 +1,4 @@
+import { type PaletteMode } from "@mui/material";
 import { invoke } from "@tauri-apps/api/tauri";
 
 export interface Data {
@@ -14,7 +15,7 @@ export interface Settings {
     store_path?: string;
   };
   appearance?: {
-    theme?: string;
+    theme?: PaletteMode;
   };
   setting_version?: number;
 }

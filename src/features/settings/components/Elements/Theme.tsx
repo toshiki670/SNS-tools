@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FormControl,
@@ -6,14 +6,16 @@ import {
   Select,
   MenuItem,
   type SelectChangeEvent,
+  type PaletteMode,
 } from "@mui/material";
 
+import { PaletteModeCtx } from "@/ctx/PaletteModeCtx";
 import { updateSettings } from "@/tauri/command";
 
 import { Group } from "../Layout";
 
 interface ThemeItem {
-  value: string;
+  value: PaletteMode;
   text: string;
 }
 
@@ -22,7 +24,9 @@ export const Theme = (): JSX.Element => {
     keyPrefix: "components.Theme",
   });
 
-  const [theme, setTheme] = useState<string>("light");
+  const context = useContext(PaletteModeCtx);
+  const mode = context?.mode;
+  const setMode = context?.setMode;
 
   const themeItems = [
     { value: "light", text: t("light") },
@@ -30,8 +34,14 @@ export const Theme = (): JSX.Element => {
   ] as ThemeItem[];
 
   const handleChange = (event: SelectChangeEvent): void => {
-    const changedValue = event.target.value;
-    setTheme(changedValue);
+    if (setMode === undefined) {
+      return;
+    }
+    const changedValue = event.target.value as PaletteMode;
+    void updateSettings({
+      appearance: { theme: changedValue },
+    });
+    setMode(changedValue);
   };
 
   return (
@@ -39,7 +49,11 @@ export const Theme = (): JSX.Element => {
       <FormControl>
         <Grid container spacing={2}>
           <Grid item xs={8}>
-            <Select label="Theme" value={theme} onChange={handleChange}>
+            <Select
+              label="Theme"
+              value={mode ?? "dark"}
+              onChange={handleChange}
+            >
               {themeItems.map((item) => (
                 <MenuItem key={item.value} value={item.value}>
                   {item.text}
