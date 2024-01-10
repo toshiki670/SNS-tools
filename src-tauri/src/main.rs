@@ -1,13 +1,13 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{api::path::app_data_dir, Manager};
-
 mod command;
 mod db;
+mod schema;
 mod settings;
 
 use db::ConnectionPool;
+use tauri::{api::path::app_data_dir, Manager};
 
 fn main() {
     std::env::set_var("RUST_LOG", log::Level::Trace.to_string());
