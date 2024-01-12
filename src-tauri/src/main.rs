@@ -5,6 +5,7 @@ mod command;
 mod db;
 mod schema;
 mod settings;
+mod utility;
 
 use db::ConnectionPool;
 use tauri::{api::path::app_data_dir, Manager};
@@ -16,10 +17,7 @@ fn main() {
     tauri::Builder::default()
         .setup(|app: &mut tauri::App| {
             let app_path =
-                app_data_dir(&app.config()).expect("Failed to get application data path.");
-            if !app_path.exists() {
-                std::fs::create_dir_all(&app_path).unwrap();
-            }
+                utility::app_data_dir(&app.config());
 
             let connection_pool = db::establish_connection(app_path.clone());
             db::run_migration(&connection_pool);
