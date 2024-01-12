@@ -13,5 +13,11 @@
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "[toml]": {
+    "editor.defaultFormatter": "be5invis.toml"
+  },
+  "lldb.showDisassembly": "auto",
+  "lldb.dereferencePointers": true,
+  "lldb.consoleMode": "commands"
 }

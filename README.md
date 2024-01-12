@@ -49,6 +49,17 @@ yarn upgrade-interactive
 
 ## Note
 
+### Cache clean
+
+```text
+// Rust
+// prepare: cargo install cargo-cache
+$ cargo cache -a
+
+// Yarn
+$ yarn cache clean
+```
+
 ### About RSPC
 
 Core と Frontend 型を共有するライブラリ
