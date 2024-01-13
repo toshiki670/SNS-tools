@@ -5,10 +5,6 @@ export interface Data {
   body: string;
 }
 
-export const submitSettings = async (): Promise<Data> => {
-  return await invoke("submit_settings");
-};
-
 export interface Settings {
   general?: {
     language?: string;

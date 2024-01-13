@@ -4,16 +4,6 @@ use tauri::command;
 
 use crate::settings;
 
-#[command]
-pub async fn submit_settings() -> Result<Value, String> {
-    let settings = settings::Settings::new();
-
-    if let Ok(_) = settings.submit() {
-        Ok(json!({"body": "abc"}))
-    } else {
-        Err("error".to_string())
-    }
-}
 
 #[command]
 pub fn get_settings() -> settings::Settings {
