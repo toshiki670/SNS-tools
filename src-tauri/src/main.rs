@@ -26,7 +26,6 @@ fn main() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            command::submit_settings,
             command::get_settings,
             command::update_settings,
             command::validate_system_current_password,
