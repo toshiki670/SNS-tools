@@ -17,11 +17,16 @@ async fn main() {
 
     tauri::Builder::default()
         .setup(|app: &mut tauri::App| {
-            let app_path = utility::tauri::app_data_dir(&app.config());
+            let app_handle = app.handle();
 
-            let pool = utility::sqlx::create_pool(app_path.clone()).unwrap();
-            utility::sqlx::migrate_database(&pool).unwrap();
-            app.manage::<SqlitePool>(pool);
+            tauri::async_runtime::spawn(async move {
+                let app_path = utility::tauri::app_data_dir(&app_handle.config());
+
+                let pool = utility::sqlx::create_pool(app_path.clone()).await.unwrap();
+                utility::sqlx::migrate_database(&pool).await.unwrap();
+                app_handle.manage::<SqlitePool>(pool);
+            });
+
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
