@@ -32,7 +32,11 @@ pub fn validate_system_current_password(current_password: &str) -> bool {
 }
 
 #[command]
-pub fn update_system_password(current_password: &str, new_password: &str, confirm_password: &str) -> bool {
+pub fn update_system_password(
+    current_password: &str,
+    new_password: &str,
+    confirm_password: &str,
+) -> bool {
     if validate_system_current_password(current_password) == false {
         unreachable!();
     }
