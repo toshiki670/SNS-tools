@@ -11,7 +11,7 @@ mod use_cases;
 mod utility;
 
 use db::ConnectionPool;
-use tauri::{api::path::app_data_dir, Manager};
+use tauri::Manager;
 
 fn main() {
     std::env::set_var("RUST_LOG", log::Level::Trace.to_string());
@@ -19,8 +19,7 @@ fn main() {
 
     tauri::Builder::default()
         .setup(|app: &mut tauri::App| {
-            let app_path =
-                utility::app_data_dir(&app.config());
+            let app_path = utility::app_data_dir(&app.config());
 
             let connection_pool = db::establish_connection(app_path.clone());
             db::run_migration(&connection_pool);
