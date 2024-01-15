@@ -10,6 +10,7 @@ mod use_cases;
 mod utility;
 
 use db::ConnectionPool;
+use sqlx::SqlitePool;
 use tauri::Manager;
 
 #[tokio::main]
@@ -25,6 +26,9 @@ async fn main() {
             db::run_migration(&connection_pool);
             app.manage::<ConnectionPool>(connection_pool);
 
+            let pool = utility::sqlx::create_pool(app_path.clone()).unwrap();
+            utility::sqlx::migrate_database(&pool).unwrap();
+            app.manage::<SqlitePool>(pool);
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
