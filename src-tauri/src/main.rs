@@ -2,14 +2,11 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod controllers;
-mod db;
 mod entities;
 mod gateways;
-mod schema;
 mod use_cases;
 mod utility;
 
-use db::ConnectionPool;
 use sqlx::SqlitePool;
 use tauri::Manager;
 
@@ -21,10 +18,6 @@ async fn main() {
     tauri::Builder::default()
         .setup(|app: &mut tauri::App| {
             let app_path = utility::tauri::app_data_dir(&app.config());
-
-            let connection_pool = db::establish_connection(app_path.clone());
-            db::run_migration(&connection_pool);
-            app.manage::<ConnectionPool>(connection_pool);
 
             let pool = utility::sqlx::create_pool(app_path.clone()).unwrap();
             utility::sqlx::migrate_database(&pool).unwrap();

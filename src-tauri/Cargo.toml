@@ -15,8 +15,6 @@ tauri-build = {version = "1.5.1", features = []}# features = ["codegen", "config
 [dependencies]
 # https://crates.io
 chrono = "0.4.31"
-diesel = {version = "2.1.4", features = ["sqlite", "r2d2", "chrono"]}
-diesel_migrations = {version = "2.1.0", features = ["sqlite"]}
 env_logger = "0.10.1"
 log = "0.4.20"
 rand = "0.8.5"
