@@ -4,11 +4,10 @@ use sqlx::{
     SqlitePool,
 };
 use std::{path::PathBuf, str::FromStr};
-use tauri::async_runtime::block_on;
 
 const DB_FILE_NAME: &'static str = "passwords.db";
 
-pub fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
+pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
     app_path.push(DB_FILE_NAME);
 
     let database_url = app_path
@@ -21,14 +20,13 @@ pub fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
         .journal_mode(SqliteJournalMode::Wal)
         .synchronous(SqliteSynchronous::Normal);
 
-    let sqlite_pool = SqlitePoolOptions::new().connect_with(connection_options);
-    let sqlite_pool = block_on(sqlite_pool)?;
+    let sqlite_pool = SqlitePoolOptions::new().connect_with(connection_options).await?;
 
     Ok(sqlite_pool)
 }
 
 /// マイグレーションを行う
-pub fn migrate_database(pool: &SqlitePool) -> AnyErrResult<()> {
-    block_on(sqlx::migrate!("./migrations").run(pool))?;
+pub async fn migrate_database(pool: &SqlitePool) -> AnyErrResult<()> {
+    sqlx::migrate!("./migrations").run(pool).await?;
     Ok(())
 }
