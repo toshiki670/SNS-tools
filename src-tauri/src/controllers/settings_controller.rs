@@ -1,6 +1,6 @@
 use crate::gateways::settings_repository;
 use crate::use_cases::{load_settings_use_case, update_settings_use_case};
-use crate::utility::app_data_dir;
+use crate::utility::tauri::app_data_dir;
 use serde_json::Value;
 
 pub fn load(app: tauri::AppHandle) -> Value {
