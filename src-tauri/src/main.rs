@@ -12,7 +12,8 @@ mod utility;
 use db::ConnectionPool;
 use tauri::Manager;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     std::env::set_var("RUST_LOG", log::Level::Trace.to_string());
     env_logger::init();
 
