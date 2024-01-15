@@ -15,14 +15,14 @@ tauri-build = {version = "1.5.1", features = []}# features = ["codegen", "config
 [dependencies]
 # https://crates.io
 chrono = "0.4.31"
-diesel = {version = "2.1.4", features = ["sqlite", "r2d2", "chrono"]}
-diesel_migrations = {version = "2.1.0", features = ["sqlite"]}
 env_logger = "0.10.1"
 log = "0.4.20"
 rand = "0.8.5"
 serde = {version = "1.0.195", features = ["derive"]}
 serde_json = "1.0.111"
+sqlx = {version = "0.7.3", features = ["runtime-tokio-rustls", "sqlite", "chrono", "migrate"]}
 tauri = {version = "1.5.4", features = ["http-all", "shell-open"]}
+tokio = {version = "1.35.1", features = ["full"]}
 toml = "0.8.8"
 uuid = {version = "1.6.1", features = ["v7", "fast-rng", "macro-diagnostics"]}
 

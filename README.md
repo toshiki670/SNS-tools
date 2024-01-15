@@ -47,6 +47,22 @@ yarn upgrade --latest
 yarn upgrade-interactive
 ```
 
+## DB
+
+```bash
+# Create DB
+$ sqlx db create --database-url="sqlite://database.db"
+
+# Create Migration file
+$ sqlx migrate add -r ${name}
+
+# Migrate run
+$ sqlx migrate run  --database-url="sqlite://database.db"
+
+# Migrate revert
+$ sqlx migrate revert  --database-url="sqlite://database.db"
+```
+
 ## Note
 
 ### Cache clean
