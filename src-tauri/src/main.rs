@@ -2,9 +2,12 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod command;
+mod controllers;
 mod db;
+mod entities;
+mod gateways;
 mod schema;
-mod settings;
+mod use_cases;
 mod utility;
 
 use db::ConnectionPool;

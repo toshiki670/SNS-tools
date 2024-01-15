@@ -1,28 +1,16 @@
-use log::{debug, error, info};
-use serde_json::{json, Value};
+use crate::controllers::settings_controller;
+use log::{debug, info};
+use serde_json::Value;
 use tauri::command;
 
-use crate::settings;
-
-
 #[command]
-pub fn get_settings() -> settings::Settings {
-    let settings = settings::Settings::new();
-    settings
+pub fn get_settings(app: tauri::AppHandle) -> Value {
+    settings_controller::load(app)
 }
 
 #[command]
-pub async fn update_settings(settings: settings::Settings) -> bool {
-    let mut current = settings::Settings::new();
-    current.update(settings);
-
-    match current.submit() {
-        Ok(_) => true,
-        Err(e) => {
-            error!("{}", e);
-            false
-        }
-    }
+pub async fn update_settings(app: tauri::AppHandle, settings: Value) -> bool {
+    settings_controller::update(app, settings)
 }
 
 #[command]
