@@ -14,10 +14,9 @@ pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
         .to_str()
         .expect("Failed to open database file path.");
 
-    // https://site-builder.wiki/posts/891
     let connection_options = SqliteConnectOptions::from_str(database_url)?
-        .create_if_missing(true)
-        .journal_mode(SqliteJournalMode::Wal)
+        .create_if_missing(true) //DB_FILE_NAME がなかった場合に作成
+        .journal_mode(SqliteJournalMode::Wal)// See: https://site-builder.wiki/posts/891
         .synchronous(SqliteSynchronous::Normal)
         .foreign_keys(true);
 
