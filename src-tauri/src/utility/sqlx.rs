@@ -25,7 +25,6 @@ pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
     Ok(sqlite_pool)
 }
 
-/// マイグレーションを行う
 pub async fn migrate_database(pool: &SqlitePool) -> AnyErrResult<()> {
     sqlx::migrate!("./migrations").run(pool).await?;
     Ok(())
