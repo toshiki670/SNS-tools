@@ -18,7 +18,8 @@ pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
     let connection_options = SqliteConnectOptions::from_str(database_url)?
         .create_if_missing(true)
         .journal_mode(SqliteJournalMode::Wal)
-        .synchronous(SqliteSynchronous::Normal);
+        .synchronous(SqliteSynchronous::Normal)
+        .foreign_keys(true);
 
     let sqlite_pool = SqlitePoolOptions::new().connect_with(connection_options).await?;
 
