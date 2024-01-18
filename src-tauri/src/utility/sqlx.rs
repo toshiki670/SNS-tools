@@ -16,11 +16,13 @@ pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
 
     let connection_options = SqliteConnectOptions::from_str(database_url)?
         .create_if_missing(true) //DB_FILE_NAME がなかった場合に作成
-        .journal_mode(SqliteJournalMode::Wal)// See: https://site-builder.wiki/posts/891
+        .journal_mode(SqliteJournalMode::Wal) // See: https://site-builder.wiki/posts/891
         .synchronous(SqliteSynchronous::Normal)
         .foreign_keys(true);
 
-    let sqlite_pool = SqlitePoolOptions::new().connect_with(connection_options).await?;
+    let sqlite_pool = SqlitePoolOptions::new()
+        .connect_with(connection_options)
+        .await?;
 
     Ok(sqlite_pool)
 }
