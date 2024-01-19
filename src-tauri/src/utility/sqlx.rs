@@ -7,7 +7,7 @@ use std::{path::PathBuf, str::FromStr};
 
 const DB_FILE_NAME: &'static str = "passwords.db";
 
-pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
+pub async fn create_pool(mut app_path: PathBuf) -> anyhow::Result<SqlitePool> {
     app_path.push(DB_FILE_NAME);
 
     let database_url = app_path
@@ -27,7 +27,7 @@ pub async fn create_pool(mut app_path: PathBuf) -> AnyErrResult<SqlitePool> {
     Ok(sqlite_pool)
 }
 
-pub async fn migrate_database(pool: &SqlitePool) -> AnyErrResult<()> {
+pub async fn migrate_database(pool: &SqlitePool) -> anyhow::Result<()> {
     sqlx::migrate!("./migrations").run(pool).await?;
     Ok(())
 }
