@@ -1,4 +1,4 @@
-use crate::utility::types::AnyErrResult;
+// Cipher: https://www.zetetic.net/sqlcipher/sqlcipher-api/
 use sqlx::{
     sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions, SqliteSynchronous},
     SqlitePool,
