@@ -5,3 +5,5 @@
 passwords.db
 passwords.db-shm
 passwords.db-wal
+
+.env
