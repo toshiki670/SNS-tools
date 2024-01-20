@@ -1,0 +1,9 @@
+[tasks.prepare_sqlx]
+description = "Prepare for `sqlx::query_as!`."
+script = [
+  "sqlx db create --database-url=\"sqlite://temp.db\"",
+  "sqlx mig run --database-url=\"sqlite://temp.db\"",
+  "cargo sqlx prepare --database-url=\"sqlite://temp.db\"",
+  "rm temp.db",
+]
+
