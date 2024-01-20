@@ -10,22 +10,22 @@ version = "0.0.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
-tauri-build = {version = "1.5.1", features = [] }# features = ["codegen", "config-json5", "config-toml", "isolation", "quote", "tauri-codegen"]
+tauri-build = {version = "1.5.1", features = []}# features = ["codegen", "config-json5", "config-toml", "isolation", "quote", "tauri-codegen"]
 
 [dependencies]
 anyhow = "1.0.79"
-chrono = "0.4.31"
+chrono = {version = "0.4.19", features = ["serde"]}
 env_logger = "0.11.0"
+libsqlite3-sys = {version = "0.27.0", default-features = false, features = ["bundled-sqlcipher"]}
 log = "0.4.20"
 rand = "0.8.5"
-serde = {version = "1.0.195", features = ["derive"] }
+serde = {version = "1.0.195", features = ["derive"]}
 serde_json = "1.0.111"
-sqlx = {version = "0.7.3", features = ["runtime-tokio-rustls", "sqlite", "chrono", "migrate"] }
-tauri = {version = "1.5.4", features = ["http-all", "shell-open"] }
-tokio = {version = "1.35.1", features = ["full"] }
+sqlx = {version = "0.7.3", features = ["runtime-tokio-rustls", "sqlite", "chrono", "migrate"]}
+tauri = {version = "1.5.4", features = ["http-all", "shell-open"]}
+tokio = {version = "1.35.1", features = ["full"]}
 toml = "0.8.8"
-uuid = {version = "1.6.1", features = ["v7", "fast-rng", "macro-diagnostics"] }
-libsqlite3-sys = {version = "0.27.0", default-features = false, features = ["bundled-sqlcipher"] }
+uuid = {version = "1.6.1", features = ["v7", "fast-rng", "macro-diagnostics"]}
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
