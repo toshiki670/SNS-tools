@@ -2238,6 +2238,7 @@ dependencies = [
  "anyhow",
  "chrono",
  "env_logger",
+ "libsqlite3-sys",
  "log",
  "rand 0.8.5",
  "serde",
