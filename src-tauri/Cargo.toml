@@ -25,7 +25,7 @@ tauri = {version = "1.5.4", features = ["http-all", "shell-open"] }
 tokio = {version = "1.35.1", features = ["full"] }
 toml = "0.8.8"
 uuid = {version = "1.6.1", features = ["v7", "fast-rng", "macro-diagnostics"] }
-libsqlite3-sys = {version = "0.27.0", default-features = false, features = ["pkg-config",  "vcpkg",  "bundled",  "unlock_notify",  "bundled-sqlcipher"] }
+libsqlite3-sys = {version = "0.27.0", default-features = false, features = ["bundled-sqlcipher"] }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
