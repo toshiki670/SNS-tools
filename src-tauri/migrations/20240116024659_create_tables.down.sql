@@ -1,12 +1,14 @@
 -- Add down migration script here
 PRAGMA foreign_keys = false;
 
-DROP TABLE items;
-
-DROP TABLE sections;
-
-DROP TABLE columns;
+DROP TABLE item_tag;
 
 DROP TABLE tags;
 
-DROP TABLE item_tag;
+DROP TABLE columns;
+
+DROP TABLE sections;
+
+DROP TABLE websites;
+
+DROP TABLE items;
