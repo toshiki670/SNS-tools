@@ -2,5 +2,6 @@
 /// Controllers, UseCases, Gateway
 pub mod date_at;
 pub mod id;
+pub mod item;
 pub mod settings;
 pub mod filtered;
