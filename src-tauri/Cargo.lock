@@ -4289,6 +4289,7 @@ dependencies = [
  "atomic",
  "getrandom 0.2.12",
  "rand 0.8.5",
+ "serde",
  "uuid-macro-internal",
 ]
 
