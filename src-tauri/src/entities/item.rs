@@ -42,7 +42,7 @@ pub enum ValueType {
     Email = 3,
     Address = 4,
     Date = 5,
-    Password = 6
+    Password = 6,
 }
 
 impl Item {
