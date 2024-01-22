@@ -14,7 +14,7 @@ yarn
 
 ```text
 cargo install cargo-make
-cargo make prepare_development 
+cargo make prepare_development
 ```
 
 ## To get started run
