@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub struct DateAt(DateTime<Utc>);
+pub struct DateAt(pub DateTime<Utc>);
 
 impl DateAt {
     pub fn now() -> Self {
