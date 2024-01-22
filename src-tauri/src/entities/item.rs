@@ -31,7 +31,7 @@ pub struct Section {
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct Column {
-    pub name: String,
+    pub name: Option<String>,
     pub value: Filtered<String>,
     pub value_type: ValueType,
 }
