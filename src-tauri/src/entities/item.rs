@@ -47,6 +47,20 @@ pub enum ValueType {
     Password = 6,
 }
 
+impl From<i64> for ValueType {
+    fn from(value: i64) -> Self {
+        match value {
+            1 => ValueType::Text,
+            2 => ValueType::Url,
+            3 => ValueType::Email,
+            4 => ValueType::Address,
+            5 => ValueType::Date,
+            6 => ValueType::Password,
+            _ => ValueType::Undefined, // 未知の値に対するデフォルトの処理
+        }
+    }
+}
+
 impl Item {
     pub fn create(&mut self) {
         self.created_at = Some(DateAt::now());
