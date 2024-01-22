@@ -62,12 +62,12 @@ impl From<i64> for ValueType {
 }
 
 impl Item {
-    pub fn create(&mut self) {
+    pub fn prepare_for_create(&mut self) {
         self.created_at = Some(DateAt::now());
         self.updated_at = Some(DateAt::now());
     }
 
-    pub fn update(&mut self) {
+    pub fn prepare_for_update(&mut self) {
         self.updated_at = Some(DateAt::now());
     }
 }
