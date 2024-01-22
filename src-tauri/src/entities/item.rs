@@ -1,37 +1,39 @@
 use crate::entities::{date_at::DateAt, filtered::Filtered, id::Id};
+use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 
-pub trait ItemRepositoryInterface<E> {
-    fn create(&self, new_item: &Item) -> anyhow::Result<Item>;
-    fn find_by_id(&self, id: &Id) -> anyhow::Result<Item>;
-    fn update(&self, change_item: &Item) -> anyhow::Result<Item>;
+#[async_trait]
+pub trait ItemRepositoryInterface {
+    async fn create(&self, new_item: &Item) -> anyhow::Result<Item>;
+    async fn find_by_id(&self, id: &Id) -> anyhow::Result<Item>;
+    async fn update(&self, change_item: &Item) -> anyhow::Result<Item>;
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct Item {
     pub id: Option<Id>,
     pub name: String,
-    pub username: String,
-    pub password: Filtered<String>,
-    pub website: Vec<String>,
-    pub sections: Vec<Sections>,
+    pub username: Option<String>,
+    pub password: Option<Filtered<String>>,
+    pub websites: Vec<String>,
+    pub sections: Vec<Section>,
     pub columns: Vec<Column>,
-    pub note: String,
+    pub note: Option<String>,
     pub created_at: Option<DateAt>,
     pub updated_at: Option<DateAt>,
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub struct Sections {
-    name: String,
-    columns: Vec<Column>,
+pub struct Section {
+    pub name: String,
+    pub columns: Vec<Column>,
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct Column {
-    name: String,
-    value: Filtered<String>,
-    value_type: ValueType,
+    pub name: String,
+    pub value: Filtered<String>,
+    pub value_type: ValueType,
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
