@@ -1,38 +1,38 @@
 use chrono::NaiveDateTime;
 
-pub struct ItemRow {
-    pub id: i64,
-    pub name: String,
-    pub username: Option<String>,
-    pub password: Option<String>,
-    pub note: Option<String>,
+pub(super) struct ItemRow {
+    pub(super) id: i64,
+    pub(super) name: String,
+    pub(super) username: Option<String>,
+    pub(super) password: Option<String>,
+    pub(super) note: Option<String>,
 
     /// # Example:
     /// `2018-12-07T19:31:28`
-    pub created_at: NaiveDateTime,
+    pub(super) created_at: NaiveDateTime,
 
     /// # Example:
     /// `2018-12-07T19:31:28`
-    pub updated_at: NaiveDateTime,
+    pub(super) updated_at: NaiveDateTime,
 }
 
-pub struct WebsiteRow {
-    pub id: i64,
-    pub item_id: i64,
-    pub url: String,
+pub(super) struct WebsiteRow {
+    pub(super) id: i64,
+    pub(super) item_id: i64,
+    pub(super) url: String,
 }
 
-pub struct SectionRow {
-    pub id: i64,
-    pub item_id: i64,
-    pub name: Option<String>,
+pub(super) struct SectionRow {
+    pub(super) id: i64,
+    pub(super) item_id: i64,
+    pub(super) name: Option<String>,
 }
 
-pub struct ColumnRow {
-    pub id: i64,
-    pub item_id: Option<i64>,
-    pub section_id: Option<i64>,
-    pub name: Option<String>,
-    pub value: Option<String>,
-    pub value_type: i64,
+pub(super) struct ColumnRow {
+    pub(super) id: i64,
+    pub(super) item_id: Option<i64>,
+    pub(super) section_id: Option<i64>,
+    pub(super) name: Option<String>,
+    pub(super) value: Option<String>,
+    pub(super) value_type: i64,
 }
