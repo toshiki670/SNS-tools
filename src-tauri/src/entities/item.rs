@@ -23,6 +23,17 @@ pub struct Item {
     pub updated_at: Option<DateAt>,
 }
 
+impl Item {
+    pub fn prepare_for_create(&mut self) {
+        self.created_at = Some(DateAt::now());
+        self.updated_at = Some(DateAt::now());
+    }
+
+    pub fn prepare_for_update(&mut self) {
+        self.updated_at = Some(DateAt::now());
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct Section {
     pub name: Option<String>,
@@ -58,16 +69,5 @@ impl From<i64> for ValueType {
             6 => ValueType::Password,
             _ => ValueType::Undefined, // 未知の値に対するデフォルトの処理
         }
-    }
-}
-
-impl Item {
-    pub fn prepare_for_create(&mut self) {
-        self.created_at = Some(DateAt::now());
-        self.updated_at = Some(DateAt::now());
-    }
-
-    pub fn prepare_for_update(&mut self) {
-        self.updated_at = Some(DateAt::now());
     }
 }
