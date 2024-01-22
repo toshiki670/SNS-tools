@@ -5,6 +5,7 @@ CREATE TABLE
     name TEXT NOT NULL,
     username TEXT,
     password TEXT,
+    note TEXT,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL
   );
@@ -13,7 +14,7 @@ CREATE TABLE
   websites (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     item_id INTEGER NOT NULL,
-    url TEXT,
+    url TEXT NOT NULL,
     FOREIGN KEY (item_id) references items (id)
   );
 
