@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 pub trait SettingsRepositoryInterface<E> {
-    fn load(&self) -> Result<Settings, E> ;
+    fn load(&self) -> Result<Settings, E>;
     fn save(&self, settings: &Settings) -> Result<(), E>;
 }
 

@@ -2,4 +2,8 @@
 # will have compiled files and executables
 /target/
 
-database.db
+passwords.db
+passwords.db-shm
+passwords.db-wal
+
+.env

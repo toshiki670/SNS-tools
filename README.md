@@ -12,6 +12,11 @@ This template should help get you started developing with Tauri and Yew.
 yarn
 ```
 
+```text
+cargo install cargo-make
+cargo make prepare_development
+```
+
 ## To get started run
 
 ```text
@@ -61,6 +66,9 @@ $ sqlx migrate run  --database-url="sqlite://database.db"
 
 # Migrate revert
 $ sqlx migrate revert  --database-url="sqlite://database.db"
+
+# Prepare for `sqlx::query_as!`.
+$ cargo make prepare_sqlx
 ```
 
 ## Note
