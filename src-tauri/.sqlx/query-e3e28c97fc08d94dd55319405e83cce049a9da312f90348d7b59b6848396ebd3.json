@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO websites (item_id, url) VALUES ($1, $2)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "e3e28c97fc08d94dd55319405e83cce049a9da312f90348d7b59b6848396ebd3"
+}

@@ -20,6 +20,79 @@ pub struct ItemRepository {
 #[async_trait]
 impl ItemRepositoryInterface for ItemRepository {
     async fn create(&self, new_item: &Item) -> anyhow::Result<Item> {
+        let mut transaction = self.pool.begin().await?;
+
+        let password = new_item.password.as_ref().map(|s| &s.0);
+        let created_at = new_item.created_at.as_ref().map(|s| &s.0);
+        let updated_at = new_item.updated_at.as_ref().map(|s| &s.0);
+
+        let inserted_item = sqlx::query_as!(
+            ItemRow,
+            "INSERT INTO items (name, username, password, note, created_at, updated_at)
+             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+            new_item.name,
+            new_item.username,
+            password,
+            new_item.note,
+            created_at,
+            updated_at
+        )
+        .fetch_one(&mut *transaction)
+        .await?;
+
+        for website in &new_item.websites {
+            sqlx::query!(
+                "INSERT INTO websites (item_id, url) VALUES ($1, $2)",
+                inserted_item.id,
+                website
+            )
+            .execute(&mut *transaction)
+            .await?;
+        }
+
+        for section in &new_item.sections {
+            let inserted_section = sqlx::query_as!(
+                SectionRow,
+                "INSERT INTO sections (item_id, name)
+                 VALUES ($1, $2) RETURNING *",
+                inserted_item.id,
+                section.name
+            )
+            .fetch_one(&mut *transaction)
+            .await?;
+
+            for column in &section.columns {
+                let value = column.value.as_ref().map(|s| &s.0);
+                let value_type = column.value_type as i64;
+                sqlx::query!(
+                    "INSERT INTO columns (section_id, name, value, value_type)
+                     VALUES ($1, $2, $3, $4)",
+                    inserted_section.id,
+                    column.name,
+                    value,
+                    value_type
+                )
+                .execute(&mut *transaction)
+                .await?;
+            }
+        }
+
+        for column in &new_item.columns {
+            let value = column.value.as_ref().map(|s| &s.0);
+            let value_type = column.value_type as i64;
+            sqlx::query!(
+                "INSERT INTO columns (item_id, name, value, value_type)
+                 VALUES ($1, $2, $3, $4)",
+                inserted_item.id,
+                column.name,
+                value,
+                value_type
+            )
+            .execute(&mut *transaction)
+            .await?;
+        }
+
+        transaction.commit().await?;
         todo!()
     }
 
