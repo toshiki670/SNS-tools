@@ -47,7 +47,7 @@ pub struct Column {
     pub value_type: ValueType,
 }
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Copy, Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub enum ValueType {
     Undefined = 0,
     Text = 1,
