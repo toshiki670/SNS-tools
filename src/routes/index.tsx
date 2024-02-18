@@ -13,7 +13,7 @@ const App = (): JSX.Element => {
 
   const drawerItems = [
     { name: "Dashboard", to: ".", icon: InboxIcon },
-    { name: "Password", to: "./x", icon: MailIcon },
+    { name: t("features.items.all"), to: "./items", icon: MailIcon },
   ] as DrawerItem[];
 
   return (

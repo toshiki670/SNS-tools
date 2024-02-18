@@ -2,6 +2,9 @@
   "appName": "Passwords",
   "features": {
     "lock": "Lock",
-    "settings": "Settings"
+    "settings": "Settings",
+    "items": {
+      "all": "All items"
+    }
   }
 }
