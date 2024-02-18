@@ -1,5 +1,5 @@
 import { useRoutes, Navigate, Outlet } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
@@ -9,6 +9,8 @@ import { Dashboard } from "@/features/misc";
 import { SettingsRoutes } from "@/features/settings";
 
 const App = (): JSX.Element => {
+  const { t } = useTranslation();
+
   const drawerItems = [
     { name: "Dashboard", to: ".", icon: InboxIcon },
     { name: "Password", to: "./x", icon: MailIcon },
