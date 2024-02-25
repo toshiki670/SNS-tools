@@ -6,7 +6,7 @@ import { Head } from "../Head";
 
 interface ContentLayoutProps {
   children: React.ReactNode;
-  title: string;
+  title?: string;
 }
 
 export const ContentLayout = ({
@@ -17,9 +17,11 @@ export const ContentLayout = ({
     <>
       <Head title={title} />
       <Box>
-        <Typography mb={2} variant="h4">
-          {title}
-        </Typography>
+        {title !== undefined && (
+          <Typography mb={2} variant="h4">
+            {title}
+          </Typography>
+        )}
         <Box>{children}</Box>
       </Box>
     </>
