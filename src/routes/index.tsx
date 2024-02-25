@@ -4,8 +4,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 import { MainLayout, type DrawerItem } from "@/components/Layout";
-
 import { Dashboard } from "@/features/misc";
+import { ItemsRoutes } from "@/features/items/ItemsRoutes";
 import { SettingsRoutes } from "@/features/settings";
 
 const App = (): JSX.Element => {
@@ -31,6 +31,7 @@ export const AppRoutes = (): JSX.Element => {
       element: <App />,
       children: [
         { path: "/", ...Dashboard },
+        { path: "/items", ...ItemsRoutes },
         { path: "*", element: <Navigate to="." /> },
       ],
     },
