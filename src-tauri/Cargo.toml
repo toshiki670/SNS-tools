@@ -7,6 +7,9 @@ name = "passwords"
 repository = ""
 version = "0.0.0"
 
+[workspace]
+members = ["migration"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
@@ -21,12 +24,14 @@ futures = "0.3.30"
 libsqlite3-sys = {version = "0.27.0", default-features = false, features = ["bundled-sqlcipher"] }
 log = "0.4.20"
 rand = "0.8.5"
+sea-orm = { version = "0.12.14", features = [ "sqlx-sqlite", "runtime-tokio-rustls", "macros", "with-chrono" ] }
 serde = {version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.114"
 sqlx = {version = "0.7.3", features = ["chrono", "migrate", "runtime-tokio-rustls", "sqlite"] }
 tauri = {version = "1.6.0", features = ["http-all", "shell-open"] }
 tokio = {version = "1.36.0", features = ["full"] }
 toml = "0.8.10"
+migration = { path = "migration" }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

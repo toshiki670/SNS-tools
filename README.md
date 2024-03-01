@@ -55,6 +55,9 @@ yarn upgrade-interactive
 ## DB
 
 ```bash
+# Install `sea-orm-cli`
+$ cargo install sea-orm-cli
+
 # Create DB
 $ sqlx db create --database-url="sqlite://database.db"
 
