@@ -1166,6 +1166,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "entity"
+version = "0.1.0"
+dependencies = [
+ "sea-orm",
+]
+
+[[package]]
 name = "env_filter"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2450,7 +2457,7 @@ dependencies = [
 
 [[package]]
 name = "migration"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-std",
  "sea-orm-migration",
@@ -2870,6 +2877,7 @@ dependencies = [
  "anyhow",
  "async-trait",
  "chrono",
+ "entity",
  "env_logger",
  "futures",
  "libsqlite3-sys",

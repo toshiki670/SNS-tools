@@ -8,7 +8,7 @@ repository = ""
 version = "0.0.0"
 
 [workspace]
-members = ["migration"]
+members = ["entity", "migration"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -31,6 +31,8 @@ sqlx = {version = "0.7.3", features = ["chrono", "migrate", "runtime-tokio-rustl
 tauri = {version = "1.6.0", features = ["http-all", "shell-open"] }
 tokio = {version = "1.36.0", features = ["full"] }
 toml = "0.8.10"
+
+entity = { path = "entity" }
 migration = { path = "migration" }
 
 [features]
