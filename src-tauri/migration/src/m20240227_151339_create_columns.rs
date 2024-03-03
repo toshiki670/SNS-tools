@@ -29,7 +29,7 @@ impl MigrationTrait for Migration {
                     .col(ColumnDef::new(Columns::Value).string())
                     .col(
                         ColumnDef::new(Columns::ValueType)
-                            .enumeration(Columns::ValueType, ValueType::iter()),
+                            .enumeration(Columns::ValueType, ValueType::iter()).not_null(),
                     )
                     .foreign_key(
                         ForeignKeyCreateStatement::new()
