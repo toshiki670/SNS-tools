@@ -8,7 +8,7 @@ repository = ""
 version = "0.0.0"
 
 [workspace]
-members = ["entity", "migration"]
+members = ["entity", "migration", "service"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
