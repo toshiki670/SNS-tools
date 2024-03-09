@@ -51,4 +51,15 @@ impl Related<super::websites::Entity> for Entity {
     }
 }
 
+impl Related<super::tags::Entity> for Entity {
+    // The final relation is Cake -> CakeFilling -> Filling
+    fn to() -> RelationDef {
+        super::item_taggings::Relation::Tags.def()
+    }
+
+    fn via() -> Option<RelationDef> {
+        Some(super::item_taggings::Relation::Items.def().rev())
+    }
+}
+
 impl ActiveModelBehavior for ActiveModel {}
