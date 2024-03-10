@@ -1,7 +1,5 @@
 use sea_orm_migration::prelude::*;
 
-use super::m20240227_151203_create_items::Items;
-
 #[derive(DeriveMigrationName)]
 pub struct Migration;
 
@@ -12,23 +10,18 @@ impl MigrationTrait for Migration {
         manager
             .create_table(
                 Table::create()
-                    .table(Websites::Table)
+                    .table(Tag::Table)
                     .if_not_exists()
                     .col(
-                        ColumnDef::new(Websites::Id)
+                        ColumnDef::new(Tag::Id)
                             .integer()
                             .not_null()
                             .auto_increment()
                             .primary_key(),
                     )
-                    .col(ColumnDef::new(Websites::ItemId).integer().not_null())
-                    .col(ColumnDef::new(Websites::Url).string().not_null())
-                    .foreign_key(
-                        ForeignKeyCreateStatement::new()
-                            .name("website_on_item_id")
-                            .from(Websites::Table, Websites::ItemId)
-                            .to(Items::Table, Items::Id),
-                    )
+                    .col(ColumnDef::new(Tag::Name).string().not_null())
+                    .col(ColumnDef::new(Tag::CreatedAt).date_time().not_null())
+                    .col(ColumnDef::new(Tag::UpdatedAt).date_time().not_null())
                     .to_owned(),
             )
             .await
@@ -37,15 +30,16 @@ impl MigrationTrait for Migration {
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         // Replace the sample below with your own migration scripts
         manager
-            .drop_table(Table::drop().table(Websites::Table).to_owned())
+            .drop_table(Table::drop().table(Tag::Table).to_owned())
             .await
     }
 }
 
 #[derive(DeriveIden)]
-enum Websites {
+pub enum Tag {
     Table,
     Id,
-    ItemId,
-    Url,
+    Name,
+    CreatedAt,
+    UpdatedAt,
 }

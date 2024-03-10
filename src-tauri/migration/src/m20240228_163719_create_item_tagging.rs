@@ -1,7 +1,7 @@
 use sea_orm_migration::prelude::*;
 
-use super::m20240227_151203_create_items::Items;
-use super::m20240227_151347_create_tags::Tags;
+use super::m20240227_151203_create_item::Item;
+use super::m20240227_151347_create_tag::Tag;
 
 #[derive(DeriveMigrationName)]
 pub struct Migration;
@@ -13,28 +13,28 @@ impl MigrationTrait for Migration {
         manager
             .create_table(
                 Table::create()
-                    .table(ItemTaggings::Table)
+                    .table(ItemTagging::Table)
                     .if_not_exists()
                     .col(
-                        ColumnDef::new(ItemTaggings::Id)
+                        ColumnDef::new(ItemTagging::Id)
                             .integer()
                             .not_null()
                             .auto_increment()
                             .primary_key(),
                     )
-                    .col(ColumnDef::new(ItemTaggings::ItemId).integer().not_null())
-                    .col(ColumnDef::new(ItemTaggings::TagId).integer().not_null())
+                    .col(ColumnDef::new(ItemTagging::ItemId).integer().not_null())
+                    .col(ColumnDef::new(ItemTagging::TagId).integer().not_null())
                     .foreign_key(
                         ForeignKeyCreateStatement::new()
                             .name("item_tagging_on_item_id")
-                            .from(ItemTaggings::Table, ItemTaggings::ItemId)
-                            .to(Items::Table, Items::Id),
+                            .from(ItemTagging::Table, ItemTagging::ItemId)
+                            .to(Item::Table, Item::Id),
                     )
                     .foreign_key(
                         ForeignKeyCreateStatement::new()
                             .name("item_tagging_on_tag_id")
-                            .from(ItemTaggings::Table, ItemTaggings::TagId)
-                            .to(Tags::Table, Tags::Id),
+                            .from(ItemTagging::Table, ItemTagging::TagId)
+                            .to(Tag::Table, Tag::Id),
                     )
                     .to_owned(),
             )
@@ -44,13 +44,13 @@ impl MigrationTrait for Migration {
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
         // Replace the sample below with your own migration scripts
         manager
-            .drop_table(Table::drop().table(ItemTaggings::Table).to_owned())
+            .drop_table(Table::drop().table(ItemTagging::Table).to_owned())
             .await
     }
 }
 
 #[derive(DeriveIden)]
-enum ItemTaggings {
+enum ItemTagging {
     Table,
     Id,
     ItemId,
