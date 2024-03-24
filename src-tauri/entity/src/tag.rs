@@ -4,7 +4,7 @@ use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq, Serialize, Deserialize)]
-#[sea_orm(table_name = "tags")]
+#[sea_orm(table_name = "tag")]
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
@@ -15,13 +15,13 @@ pub struct Model {
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(has_many = "super::item_taggings::Entity")]
-    ItemTaggings,
+    #[sea_orm(has_many = "super::item_tagging::Entity")]
+    ItemTagging,
 }
 
-impl Related<super::item_taggings::Entity> for Entity {
+impl Related<super::item_tagging::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::ItemTaggings.def()
+        Relation::ItemTagging.def()
     }
 }
 

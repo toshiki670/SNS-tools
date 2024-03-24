@@ -2,9 +2,9 @@
 
 pub mod prelude;
 
-pub mod columns;
-pub mod item_taggings;
-pub mod items;
-pub mod sections;
-pub mod tags;
-pub mod websites;
+pub mod column;
+pub mod item_tagging;
+pub mod item;
+pub mod section;
+pub mod tag;
+pub mod website;

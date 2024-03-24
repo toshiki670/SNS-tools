@@ -16,7 +16,7 @@ pub enum ValueType {
 }
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq, Serialize, Deserialize)]
-#[sea_orm(table_name = "columns")]
+#[sea_orm(table_name = "column")]
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
@@ -30,32 +30,32 @@ pub struct Model {
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
     #[sea_orm(
-        belongs_to = "super::items::Entity",
+        belongs_to = "super::item::Entity",
         from = "Column::ItemId",
-        to = "super::items::Column::Id",
+        to = "super::item::Column::Id",
         on_update = "Cascade",
         on_delete = "Cascade"
     )]
-    Items,
+    Item,
     #[sea_orm(
-        belongs_to = "super::sections::Entity",
+        belongs_to = "super::section::Entity",
         from = "Column::ItemId",
-        to = "super::sections::Column::Id",
+        to = "super::section::Column::Id",
         on_update = "Cascade",
         on_delete = "Cascade"
     )]
-    Sections,
+    Section,
 }
 
-impl Related<super::items::Entity> for Entity {
+impl Related<super::item::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::Items.def()
+        Relation::Item.def()
     }
 }
 
-impl Related<super::sections::Entity> for Entity {
+impl Related<super::section::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::Sections.def()
+        Relation::Section.def()
     }
 }
 

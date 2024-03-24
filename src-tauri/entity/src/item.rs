@@ -4,7 +4,7 @@ use sea_orm::entity::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq, Serialize, Deserialize)]
-#[sea_orm(table_name = "items")]
+#[sea_orm(table_name = "item")]
 pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
@@ -18,48 +18,48 @@ pub struct Model {
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {
-    #[sea_orm(has_many = "super::columns::Entity")]
-    Columns,
-    #[sea_orm(has_many = "super::item_taggings::Entity")]
-    ItemTaggings,
-    #[sea_orm(has_many = "super::sections::Entity")]
-    Sections,
-    #[sea_orm(has_many = "super::websites::Entity")]
-    Websites,
+    #[sea_orm(has_many = "super::column::Entity")]
+    Column,
+    #[sea_orm(has_many = "super::item_tagging::Entity")]
+    ItemTagging,
+    #[sea_orm(has_many = "super::section::Entity")]
+    Section,
+    #[sea_orm(has_many = "super::website::Entity")]
+    Website,
 }
 
-impl Related<super::columns::Entity> for Entity {
+impl Related<super::column::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::Columns.def()
+        Relation::Column.def()
     }
 }
 
-impl Related<super::item_taggings::Entity> for Entity {
+impl Related<super::item_tagging::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::ItemTaggings.def()
+        Relation::ItemTagging.def()
     }
 }
 
-impl Related<super::sections::Entity> for Entity {
+impl Related<super::section::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::Sections.def()
+        Relation::Section.def()
     }
 }
 
-impl Related<super::websites::Entity> for Entity {
+impl Related<super::website::Entity> for Entity {
     fn to() -> RelationDef {
-        Relation::Websites.def()
+        Relation::Website.def()
     }
 }
 
-impl Related<super::tags::Entity> for Entity {
+impl Related<super::tag::Entity> for Entity {
     // The final relation is Cake -> CakeFilling -> Filling
     fn to() -> RelationDef {
-        super::item_taggings::Relation::Tags.def()
+        super::item_tagging::Relation::Tag.def()
     }
 
     fn via() -> Option<RelationDef> {
-        Some(super::item_taggings::Relation::Items.def().rev())
+        Some(super::item_tagging::Relation::Item.def().rev())
     }
 }
 
