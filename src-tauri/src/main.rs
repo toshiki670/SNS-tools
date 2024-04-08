@@ -1,7 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod controllers;
+mod command;
 mod entities;
 mod gateways;
 mod use_cases;
@@ -30,10 +30,10 @@ async fn main() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            controllers::command::get_settings,
-            controllers::command::update_settings,
-            controllers::command::validate_system_current_password,
-            controllers::command::update_system_password,
+            command::get_settings,
+            command::update_settings,
+            command::validate_system_current_password,
+            command::update_system_password,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
